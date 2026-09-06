@@ -1,0 +1,33 @@
+#!/bin/sh
+# Stub Pile guard. Install with:  ln -sf ../../scripts/pre-commit .git/hooks/pre-commit
+# 1. refuse to commit any private file, even if force-added
+# 2. refuse if generated public files are stale relative to the master
+# 3. refuse if any companion's name appears in a staged public file
+set -e
+PRIVATE='^(stub-pile-data\.json|stub-pile\.html|stub-pile\.jsx|stub-pile-shows\.jsx|stub-pile\.(docx|xlsx|csv)|private/.*|.*\.skill)$'
+staged=$(git diff --cached --name-only --diff-filter=ACMR)
+bad=$(printf '%s\n' "$staged" | grep -E "$PRIVATE" || true)
+if [ -n "$bad" ]; then
+  echo "pre-commit: refusing to commit private file(s):"; printf '  %s\n' $bad; exit 1
+fi
+if [ -f stub-pile-data.json ]; then
+  python3 build/build.py --check >/dev/null || { echo "pre-commit: derived files are stale or the privacy check failed — run: python3 build/build.py"; exit 1; }
+  names=$(python3 - <<'PY'
+import json,re
+d=json.load(open("stub-pile-data.json"))
+s=set()
+for r in d["items"]:
+    for n in re.split(r",(?![^(]*\))", r.get("companions","") or ""):
+        n=n.strip()
+        if n: s.add(n)
+print("\n".join(sorted(s)))
+PY
+)
+  for f in $(printf '%s\n' "$staged" | grep -E '^(public/|docs/)' || true); do
+    printf '%s\n' "$names" | while IFS= read -r n; do
+      [ -z "$n" ] && continue
+      if git show ":$f" | grep -qw -- "$n"; then echo "pre-commit: '$n' appears in $f"; exit 1; fi
+    done
+  done
+fi
+exit 0

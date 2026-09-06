@@ -1,0 +1,16 @@
+# ---- PRIVATE: the master record and everything generated with full data ----
+stub-pile-data.json
+stub-pile.html
+stub-pile.jsx
+stub-pile-shows.jsx
+stub-pile.docx
+stub-pile.xlsx
+stub-pile.csv
+*.skill
+private/
+_to_delete/
+
+# scratch
+.DS_Store
+__pycache__/
+*.png.tmp

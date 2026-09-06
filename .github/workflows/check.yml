@@ -1,0 +1,25 @@
+name: privacy check
+on: [push, pull_request]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: no private files in the repo
+        run: |
+          for f in stub-pile-data.json stub-pile.html stub-pile.jsx stub-pile-shows.jsx; do
+            if [ -e "$f" ]; then echo "$f must never be committed"; exit 1; fi
+          done
+          ! git ls-files | grep -E '\.skill$|^private/' 
+      - name: public files carry no private fields or future dates
+        run: |
+          python3 - <<'PY'
+          import json, datetime, sys
+          d = json.load(open("public/concert-history.json"))
+          today = datetime.date.today().isoformat()
+          bad = [r for r in d["items"] if r.get("companions") or r.get("seat") or r.get("link")
+                 or r["status"] not in ("attended", "missed") or r["date"] > today]
+          if bad:
+              print("private data in public file:", bad); sys.exit(1)
+          print(f"ok: {d['count']} public rows")
+          PY

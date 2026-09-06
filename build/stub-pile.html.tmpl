@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stub Pile — Concert History</title>
+<style>
+  :root{
+    --paper:#E6E4DA; --paperDeep:#D9D6CA; --card:#F5F3EC;
+    --ink:#15151A; --blue:#1E2E86; --pink:#EF4E7B; --muted:#6E6C62;
+    --display:'Haettenschweiler','Arial Narrow Bold',Impact,Anton,sans-serif;
+    --body:'Helvetica Neue',Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,'Courier New',monospace;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);-webkit-text-size-adjust:100%;}
+  .wrap{max-width:820px;margin:0 auto;padding:32px 16px 64px;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+  .focus:focus-visible{outline:2px solid var(--pink);outline-offset:2px;}
+  ::selection{background:var(--pink);color:var(--card);}
+  input,select,textarea{font-family:var(--body);}
+  a{color:inherit;}
+
+  /* masthead */
+  .top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;}
+  h1.mast{font-family:var(--display);font-size:64px;line-height:.86;color:var(--blue);
+    letter-spacing:.01em;text-transform:uppercase;margin:0;}
+  .tag{font-family:var(--body);font-size:15px;line-height:1.35;margin:12px 0 0;}
+  .span{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--muted);
+    text-transform:uppercase;margin:8px 0 0;}
+  .stub-art{width:210px;flex:0 0 auto;}
+  @media(max-width:640px){.stub-art{display:none;} h1.mast{font-size:52px;}}
+
+  /* stats */
+  .statbar{margin-top:24px;border-top:2px solid var(--ink);padding-top:20px;}
+  .stats{display:flex;flex-wrap:wrap;gap:16px 0;}
+  .stat{padding-right:24px;text-align:left;}
+  .stat .fig{font-family:var(--display);font-size:30px;line-height:1;color:var(--blue);}
+  .stat .lab{font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--muted);
+    text-transform:uppercase;margin-top:4px;}
+  .stat.on .fig{color:var(--pink);}
+  .stat.on .lab{color:var(--pink);}
+  .stat.clk .lab{border-bottom:1px dotted var(--muted);display:inline-block;}
+  .stat.clk.on .lab{border-bottom-color:var(--pink);}
+
+  .breakdown{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px;}
+  .chip{border:1px solid var(--paperDeep);background:var(--card);padding:4px 8px;display:inline-flex;
+    align-items:center;gap:6px;font-size:12px;}
+  .chip.on{border-color:var(--blue);background:var(--blue);color:var(--card);}
+  .chip .n{font-family:var(--mono);font-size:10px;color:var(--pink);}
+  .chip.on .n{color:var(--card);}
+  .aka{font-family:var(--mono);font-size:10px;color:var(--muted);margin:4px 0 0;}
+  .aka b{color:var(--blue);font-weight:normal;}
+
+  .bars{margin-top:20px;display:flex;align-items:flex-end;gap:3px;height:52px;}
+  .bar{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;}
+  .bar .cnt{font-family:var(--mono);font-size:8px;color:var(--muted);margin-bottom:2px;}
+  .bar .col{width:100%;background:var(--paperDeep);}
+  .bar .yr{font-family:var(--mono);font-size:7px;color:var(--muted);margin-top:3px;letter-spacing:-.03em;}
+
+  /* controls */
+  .controls{margin-top:24px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+  .controls2{margin-top:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+  .inp{border:2px solid var(--paperDeep);background:var(--card);padding:8px;font-size:13px;color:var(--ink);}
+  .search{flex:1;min-width:0;}
+  .sel{border:2px solid var(--paperDeep);background:var(--card);padding:8px;font-family:var(--mono);
+    font-size:11px;letter-spacing:.06em;color:var(--ink);}
+  .btn{padding:8px 16px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;}
+  .btn.solid{background:var(--blue);color:var(--card);}
+  .btn.ghost{border:2px solid var(--paperDeep);color:var(--ink);}
+
+  .count{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
+
+  /* ticket stub */
+  .stub{position:relative;display:flex;background:var(--card);margin-bottom:12px;}
+  .notch{position:absolute;height:16px;width:16px;border-radius:50%;background:var(--paper);left:60px;}
+  .notch.t{top:-8px;} .notch.b{bottom:-8px;}
+  .datecol{flex:0 0 auto;width:76px;padding:16px 0;text-align:center;}
+  .datecol .mo{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--muted);}
+  .datecol .dy{font-family:var(--display);font-size:34px;line-height:1.05;}
+  .datecol .yr{font-family:var(--mono);font-size:10px;color:var(--muted);}
+  .perf{border-left:2px dashed var(--paperDeep);}
+  .body{flex:1;min-width:0;padding:16px 12px 16px 16px;}
+  .brow{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+  .band{font-family:var(--display);font-size:24px;line-height:1.05;text-transform:uppercase;
+    word-break:break-word;margin:0;}
+  .stamp{flex:0 0 auto;transform:rotate(-3deg);border:2px solid;padding:4px 8px;font-family:var(--mono);
+    font-size:9px;letter-spacing:.14em;text-transform:uppercase;}
+  .place{font-family:var(--mono);font-size:12px;margin:8px 0 0;word-break:break-word;}
+  .now{font-family:var(--mono);font-size:10px;color:var(--muted);margin:2px 0 0;}
+  .tour{font-family:var(--mono);font-size:11px;color:var(--muted);margin:4px 0 0;}
+  .sub{margin-top:12px;}
+  .sublab{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+  .bill{margin-top:4px;display:flex;flex-wrap:wrap;gap:2px 8px;font-size:14px;}
+  .crew{margin-top:4px;display:flex;flex-wrap:wrap;gap:6px;}
+  .who{background:var(--blue);color:var(--card);padding:4px 8px;font-size:13px;}
+  .solo{margin-top:12px;display:inline-flex;align-items:center;gap:8px;border:2px solid var(--pink);
+    padding:6px 12px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--pink);}
+  .notes{margin-top:8px;font-size:13px;white-space:pre-wrap;}
+  .tags{margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;}
+  .tg{background:var(--paperDeep);color:var(--blue);padding:2px 8px;font-family:var(--mono);font-size:9px;
+    letter-spacing:.1em;text-transform:uppercase;}
+  .acts{margin-top:12px;display:flex;align-items:center;gap:16px;}
+  .act{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;}
+  .act.edit{color:var(--blue);} .act.del{color:var(--muted);} .act.delc{color:var(--pink);}
+  .stub.missed{opacity:.72;}
+
+  .empty{border:2px dashed var(--paperDeep);padding:32px;text-align:center;}
+  .foot{margin-top:40px;font-family:var(--mono);font-size:9px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted);}
+
+  /* modal */
+  .overlay{position:fixed;inset:0;background:rgba(21,21,26,.45);overflow-y:auto;z-index:20;}
+  .modal{max-width:576px;margin:0 auto;min-height:100%;padding:12px;}
+  @media(min-width:640px){.modal{padding:24px;}}
+  .sheet{background:var(--card);padding:20px;}
+  .sheethead{display:flex;align-items:baseline;justify-content:space-between;}
+  .sheethead h2{font-family:var(--display);font-size:28px;color:var(--blue);text-transform:uppercase;margin:0;}
+  .grid{margin-top:20px;display:grid;grid-template-columns:1fr;gap:16px;}
+  @media(min-width:640px){.grid{grid-template-columns:1fr 1fr;} .col2{grid-column:span 2;}}
+  label.fld{display:block;}
+  .fld .l{display:block;margin-bottom:4px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);}
+  .fld .h{display:block;margin-top:4px;font-family:var(--mono);font-size:10px;color:var(--muted);}
+  .fld input,.fld select,.fld textarea{width:100%;border:none;border-bottom:2px solid var(--paperDeep);
+    background:transparent;padding:8px 4px;font-size:15px;color:var(--ink);outline:none;}
+  .fld input:focus,.fld select:focus,.fld textarea:focus{border-bottom-color:var(--pink);}
+  .err{margin-top:16px;font-family:var(--mono);font-size:11px;color:var(--pink);}
+  .sheetacts{margin-top:24px;display:flex;gap:12px;}
+
+  .menu{position:relative;}
+  .menupop{position:absolute;right:0;top:calc(100% + 4px);background:var(--card);border:2px solid var(--paperDeep);
+    z-index:30;min-width:180px;}
+  .menupop button{display:block;width:100%;text-align:left;padding:10px 12px;font-family:var(--mono);
+    font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);}
+  .menupop button:hover{background:var(--paperDeep);}
+  .hidden{display:none;}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<script>
+/* ============================================================================
+   DATA — your __COUNT__ shows, baked into this file from stub-pile-data.json
+   (exported __EXPORTED__). Generated by build/build.py — do not hand-edit;
+   edit the JSON and rebuild. Edits made in the app live in memory only;
+   use Export to save a new copy.
+   ============================================================================ */
+const DATA = __DATA_JSON__;
+/* true in the published (GitHub Pages) build: companions are stripped, so the
+   solo stat and the who-you-went-with filter would be meaningless. */
+const PUBLIC = __PUBLIC__;
+
+/* Venue registry: keeps a building's identity across renamings. */
+const VENUES = [
+  {id:"fairpark",city:"Dallas, TX",names:[
+    ["Coca-Cola Starplex Amphitheatre","1988-07-23","1998-12-31"],
+    ["Starplex Amphitheatre","1999-01-01","1999-12-31"],
+    ["Smirnoff Music Centre","2000-01-01","2007-12-31"],
+    ["Superpages.com Center","2008-01-01","2010-12-31"],
+    ["Gexa Energy Pavilion","2011-01-01","2016-12-31"],
+    ["Starplex Pavilion","2017-01-01","2018-04-19"],
+    ["Dos Equis Pavilion","2018-04-20",null]]},
+  {id:"grandprairie",city:"Grand Prairie, TX",names:[
+    ["NextStage Performance Theater","2002-02-01","2004-12-31"],
+    ["Nokia Theatre at Grand Prairie","2005-01-01","2010-01-31"],
+    ["Verizon Theatre at Grand Prairie","2010-02-01","2018-07-26"],
+    ["The Theatre at Grand Prairie","2018-07-27","2021-04-26"],
+    ["Texas Trust CU Theatre","2021-04-27",null]],
+    also:["Nokia Live at Grand Prairie","Nokia Theatre","Verizon Theatre"]},
+  {id:"deepellum",city:"Dallas, TX",names:[
+    ["The Bomb Factory","2015-03-26","2021-07-11"],
+    ["The Factory in Deep Ellum","2021-07-12","2025-03-02"],
+    ["The Bomb Factory","2025-03-03",null]],
+    also:["Bomb Factory"]},
+  {id:"frisco",city:"Frisco, TX",names:[
+    ["Pizza Hut Park","2005-08-06","2012-06-30"],
+    ["FC Dallas Stadium","2012-07-01","2013-06-30"],
+    ["Toyota Stadium","2013-07-01",null]]},
+  {id:"arlington",city:"Arlington, TX",names:[
+    ["Cowboys Stadium","2009-05-27","2013-07-24"],
+    ["AT&T Stadium","2013-07-25",null]]},
+];
+
+/* ============================================================================
+   APP
+   ============================================================================ */
+const MONTHS=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+const STATUS={
+  wishlist:{label:"Want to go",stamp:"WISH LIST",color:"var(--pink)"},
+  tickets:{label:"Tickets booked",stamp:"TICKETS",color:"var(--blue)"},
+  attended:{label:"Went",stamp:"ATTENDED",color:"var(--blue)"},
+  missed:{label:"Missed it",stamp:"MISSED",color:"var(--muted)"},
+};
+const BLANK={band:"",support:"",tour:"",venue:"",city:"",date:"",status:"attended",
+  seat:"",companions:"",tags:"",rating:0,link:"",notes:"",question:""};
+
+const norm=v=>String(v||"").trim().toLowerCase();
+const VENUE_INDEX=(()=>{const m={};VENUES.forEach(v=>{v.names.forEach(([n])=>m[norm(n)]=v.id);
+  (v.also||[]).forEach(n=>m[norm(n)]=v.id);});return m;})();
+const venueById=id=>VENUES.find(v=>v.id===id);
+const venueRecord=name=>venueById(VENUE_INDEX[norm(name)]);
+function currentName(v){if(!v)return null;const o=v.names.find(([,,to])=>!to);return o?o[0]:v.names[v.names.length-1][0];}
+function venueKey(name){const v=venueRecord(name);return v?currentName(v):String(name||"").trim();}
+
+function uid(){return Math.random().toString(36).slice(2,10)+Date.now().toString(36);}
+function parseDate(s){if(!s)return null;const p=s.split("-").map(Number);
+  if(!p[0]||!p[1]||!p[2])return null;return {y:p[0],m:p[1],d:p[2]};}
+function tagList(s){return String(s||"").split(",").map(t=>t.trim()).filter(Boolean);}
+function splitList(s){return String(s||"").split(/,(?![^(]*\))/).map(t=>t.trim()).filter(Boolean);}
+const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+
+/* state */
+let items = DATA.map(d=>({...BLANK,...d,id:d.id||uid()}));
+let ui={query:"",status:"all",year:"all",tag:"all",person:"all",sort:"newest",
+  openStat:"",pick:null,draft:null,formError:"",menuOpen:false};
+
+/* derived helpers */
+/* Shows that count toward artists / venues / cities / the year bar.
+   A "missed" show stays in the list but is not something you were at. */
+const counted=()=>items.filter(i=>i.status!=="missed");
+function computeStats(){
+  const went=items.filter(i=>i.status==="attended").length;
+  const upcoming=items.filter(i=>i.status==="tickets"||i.status==="wishlist").length;
+  const missed=items.filter(i=>i.status==="missed").length;
+  const uniq=arr=>new Set(arr.filter(Boolean).map(s=>s.trim().toLowerCase())).size;
+  const c=counted();
+  return {went,upcoming,missed,
+    artists:uniq(c.map(i=>i.band)),
+    venues:uniq(c.map(i=>venueKey(i.venue))),
+    cities:uniq(c.map(i=>i.city))};
+}
+function soloCount(){return items.filter(i=>(i.status||"attended")==="attended"&&!splitList(i.companions).length).length;}
+function tally(key){const m={};counted().forEach(i=>{const v=(i[key]||"").trim();if(v)m[v]=(m[v]||0)+1;});
+  return Object.entries(m).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]));}
+function venueTally(){const m={};counted().forEach(i=>{const k=venueKey(i.venue);if(k)m[k]=(m[k]||0)+1;});
+  return Object.entries(m).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]));}
+function peopleTally(){const m={};items.forEach(i=>splitList(i.companions).forEach(p=>m[p]=(m[p]||0)+1));
+  return Object.entries(m).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]));}
+function yearsList(){const s=new Set();items.forEach(i=>{const d=parseDate(i.date);if(d)s.add(d.y);});
+  return [...s].sort((a,b)=>b-a);}
+function allTags(){const s=new Set();items.forEach(i=>tagList(i.tags).forEach(t=>s.add(t)));return [...s].sort();}
+function yearCounts(){const ys=counted().map(i=>String(i.date||"").slice(0,4)).filter(Boolean);
+  if(!ys.length)return{};const lo=Math.min(...ys.map(Number)),hi=Math.max(...ys.map(Number));const m={};
+  for(let y=lo;y<=hi;y++)m[String(y)]=0;ys.forEach(y=>m[y]++);return m;}
+function spanLabel(){const ys=items.map(i=>String(i.date||"").slice(0,4)).filter(Boolean).sort();
+  if(!ys.length)return"";return ys[0]===ys[ys.length-1]?ys[0]:ys[0]+"–"+ys[ys.length-1];}
+
+function visibleItems(){
+  const q=ui.query.trim().toLowerCase();
+  let out=items.filter(i=>{
+    if(ui.status!=="all"&&i.status!==ui.status)return false;
+    if(ui.year!=="all"){const d=parseDate(i.date);if(!d||String(d.y)!==ui.year)return false;}
+    if(ui.tag!=="all"&&!tagList(i.tags).includes(ui.tag))return false;
+    if(ui.person==="__solo"){if(splitList(i.companions).length||i.status!=="attended")return false;}
+    else if(ui.person!=="all"&&!splitList(i.companions).includes(ui.person))return false;
+    if(ui.pick){
+      if(ui.pick.type==="venue"&&venueKey(i.venue)!==ui.pick.value)return false;
+      if(ui.pick.type==="band"&&i.band!==ui.pick.value)return false;
+      if(ui.pick.type==="city"&&(i.city||"").trim()!==ui.pick.value)return false;
+    }
+    if(!q)return true;
+    const hay=[i.band,i.support,i.tour,i.venue,i.city,i.companions,i.tags,i.notes,i.seat,i.date].join(" ").toLowerCase();
+    return hay.includes(q);
+  });
+  out.sort((a,b)=>{
+    if(ui.sort==="artist")return String(a.band).localeCompare(String(b.band));
+    if(ui.sort==="rated")return (b.rating||0)-(a.rating||0);
+    const da=a.date||"",db=b.date||"";
+    if(ui.sort==="oldest")return da.localeCompare(db);
+    return db.localeCompare(da);
+  });
+  return out;
+}
+
+/* ---------- rendering ---------- */
+function stubArtSVG(){
+  const T=[["6","54","-13","var(--card)","var(--paperDeep)","var(--pink)"],
+    ["30","40","-5","var(--card)","var(--paperDeep)","var(--blue)"],
+    ["56","30","4","var(--card)","var(--paperDeep)","var(--pink)"],
+    ["80","18","12","var(--blue)","var(--blue)","var(--card)"]];
+  let g="";
+  T.forEach(([x,y,rot,fill,edge,accent])=>{
+    const onBlue=fill==="var(--blue)";const ink=onBlue?"var(--card)":"var(--ink)";
+    const soft=onBlue?"rgba(245,243,236,0.55)":"var(--muted)";
+    g+=`<g transform="translate(${x} ${y}) rotate(${rot})">
+      <rect width="104" height="58" rx="2" fill="${fill}" stroke="${edge}" stroke-width="1.5"/>
+      <line x1="30" y1="4" x2="30" y2="54" stroke="${soft}" stroke-width="1.2" stroke-dasharray="3 3"/>
+      <circle cx="30" cy="0" r="3.4" fill="var(--paper)"/><circle cx="30" cy="58" r="3.4" fill="var(--paper)"/>
+      <rect x="8" y="16" width="14" height="3" rx="1.5" fill="${accent}"/>
+      <rect x="8" y="24" width="14" height="2" rx="1" fill="${soft}"/>
+      <rect x="8" y="30" width="10" height="2" rx="1" fill="${soft}"/>
+      <rect x="40" y="12" width="52" height="5" rx="1" fill="${ink}" opacity="0.85"/>
+      <rect x="40" y="23" width="38" height="3" rx="1.5" fill="${soft}"/>
+      <rect x="40" y="30" width="44" height="3" rx="1.5" fill="${soft}"/>
+      <rect x="40" y="41" width="20" height="7" rx="1" fill="${accent}"/></g>`;
+  });
+  return `<svg viewBox="0 0 210 150" style="width:100%;max-width:210px" role="img" aria-label="A fanned stack of ticket stubs">${g}</svg>`;
+}
+
+function statEl(fig,lab,key,clickable){
+  const on = clickable && ui.openStat===key;
+  const cls="stat"+(clickable?" clk":"")+(on?" on":"");
+  return `<button class="${cls} focus" data-stat="${clickable?key:''}"><span class="fig">${fig}</span><span class="lab">${esc(lab)}</span></button>`;
+}
+
+function breakdownEl(entries,type){
+  return `<div class="breakdown">`+entries.map(([name,n])=>{
+    const on=ui.pick&&ui.pick.type===type&&ui.pick.value===name;
+    return `<button class="chip focus${on?' on':''}" data-pick="${type}" data-val="${esc(name)}">${esc(name)}<span class="n">${n}</span></button>`;
+  }).join("")+`</div>`;
+}
+
+function barsEl(){
+  const counts=yearCounts();const years=Object.keys(counts).sort();
+  if(years.length<2)return"";
+  const max=Math.max(...Object.values(counts));
+  return `<div class="bars">`+years.map(y=>{
+    const n=counts[y];const h=Math.max(2,(n/max)*26);
+    return `<div class="bar" title="${y}: ${n}"><span class="cnt">${n||""}</span>
+      <div class="col" style="height:${h}px;${n?'background:var(--blue);':''}"></div>
+      <span class="yr">${y.slice(2)}</span></div>`;
+  }).join("")+`</div>`;
+}
+
+function stubEl(it){
+  const d=parseDate(it.date);const st=STATUS[it.status]||STATUS.attended;
+  const tags=tagList(it.tags);const bill=splitList(it.support);const crew=splitList(it.companions);
+  const vrec=venueRecord(it.venue);const now=currentName(vrec);
+  const renamed=now&&norm(now)!==norm(it.venue)?now:null;
+  const datecol=d?`<div class="mo">${MONTHS[d.m-1]}</div><div class="dy">${String(d.d).padStart(2,"0")}</div><div class="yr">${d.y}</div>`
+    :`<div class="mo">NO<br>DATE</div>`;
+  let h=`<article class="stub${it.status==="missed"?" missed":""}"><span class="notch t"></span><span class="notch b"></span>
+    <div class="datecol">${datecol}</div><div class="perf"></div><div class="body">
+    <div class="brow"><h3 class="band">${esc(it.band)}</h3>
+    <span class="stamp" style="color:${st.color};border-color:${st.color}">${st.stamp}</span></div>
+    <p class="place">${esc([it.venue,it.city].filter(Boolean).join("  ·  ")||"Venue not set")}</p>`;
+  if(renamed)h+=`<p class="now">now ${esc(renamed)}</p>`;
+  if(it.tour||it.seat)h+=`<p class="tour">${esc([it.tour,it.seat].filter(Boolean).join("  ·  "))}</p>`;
+  if(bill.length)h+=`<div class="sub"><span class="sublab">Also on the bill</span><div class="bill">`
+    +bill.map((b,i)=>`<span>${esc(b)}${i<bill.length-1?' <span style="color:var(--pink)">·</span>':''}</span>`).join("")+`</div></div>`;
+  if(!PUBLIC&&!crew.length&&it.status==="attended")h+=`<div class="solo"><span style="color:var(--pink)">✦</span> Flew solo</div>`;
+  if(crew.length)h+=`<div class="sub"><span class="sublab">${it.status==="missed"?"Had tickets with":"Went with"}</span><div class="crew">`
+    +crew.map(p=>`<span class="who">${esc(p)}</span>`).join("")+`</div></div>`;
+  if(it.rating)h+=`<p style="margin-top:8px;color:var(--pink);letter-spacing:.1em">${"★".repeat(it.rating)}<span style="color:var(--paperDeep)">${"★".repeat(5-it.rating)}</span></p>`;
+  if(it.notes)h+=`<p class="notes">${esc(it.notes)}</p>`;
+  if(it.question)h+=`<p style="margin-top:8px;border-left:2px solid var(--pink);padding-left:8px;font-family:var(--mono);font-size:11px;color:var(--pink)">? ${esc(it.question)}</p>`;
+  if(tags.length)h+=`<div class="tags">`+tags.map(t=>`<span class="tg">${esc(t)}</span>`).join("")+`</div>`;
+  h+=`<div class="acts"><button class="act edit focus" data-edit="${it.id}">Edit</button>
+    <button class="act del focus" data-del="${it.id}">Delete</button>`;
+  if(it.link)h+=`<a class="act focus" style="color:var(--muted)" href="${esc(it.link)}" target="_blank" rel="noreferrer">Link</a>`;
+  h+=`</div></div></article>`;
+  return h;
+}
+
+function render(){
+  const s=computeStats();const vis=visibleItems();const span=spanLabel();
+  const el=document.getElementById("app");
+  let h=`<div class="top"><div style="min-width:0">
+    <h1 class="mast">Stub<br>Pile</h1>
+    <p class="tag">The music we love, and the nights we were there.</p>
+    <p class="span">${span?span+" · ":""}every stub kept</p></div>
+    <div class="stub-art">${stubArtSVG()}</div></div>`;
+
+  h+=`<div class="statbar"><div class="stats">
+    ${statEl(s.went,"shows seen","",false)}
+    ${PUBLIC?"":statEl(s.upcoming,"ahead","",false)}
+    ${s.missed?statEl(s.missed,"got away","",false):""}
+    ${statEl(s.artists,"artists","artists",true)}
+    ${statEl(s.venues,"venues","venues",true)}
+    ${statEl(s.cities,"cities","cities",true)}
+    ${PUBLIC?"":statEl(soloCount(),"flown solo","__solo",true)}
+    </div>`;
+  if(ui.openStat==="cities")h+=breakdownEl(tally("city"),"city");
+  if(ui.openStat==="artists")h+=breakdownEl(tally("band"),"band");
+  if(ui.openStat==="venues"){
+    h+=breakdownEl(venueTally(),"venue");
+    const used=VENUES.filter(v=>items.some(i=>{const r=venueRecord(i.venue);return r&&r.id===v.id;}));
+    h+=`<div style="margin-top:16px">`+used.map(v=>{
+      const aka=v.names.map(n=>n[0]).filter((n,i,a)=>a.indexOf(n)===i&&norm(n)!==norm(currentName(v)));
+      return `<p class="aka"><b>${esc(currentName(v))}</b> — also known as ${esc(aka.join(", "))}</p>`;
+    }).join("")+`</div>`;
+  }
+  h+=barsEl();
+  h+=`</div>`;
+
+  /* controls */
+  h+=`<div class="controls">
+    <input class="inp search focus" id="q" placeholder="Search artist, venue, city, notes…" value="${esc(ui.query)}" aria-label="Search shows"/>
+    <button class="btn solid focus" id="add">+ Add show</button></div>`;
+
+  const yopts=yearsList().map(y=>`<option value="${y}"${ui.year===String(y)?" selected":""}>${y}</option>`).join("");
+  const topts=allTags().map(t=>`<option value="${esc(t)}"${ui.tag===t?" selected":""}>${esc(t)}</option>`).join("");
+  const popts=peopleTally().map(([p,n])=>`<option value="${esc(p)}"${ui.person===p?" selected":""}>${esc(p)} (${n})</option>`).join("");
+  const sopts=Object.keys(STATUS).map(k=>`<option value="${k}"${ui.status===k?" selected":""}>${STATUS[k].label}</option>`).join("");
+  h+=`<div class="controls2">
+    <select class="sel focus" id="fstatus" aria-label="Filter by status"><option value="all">All statuses</option>${sopts}</select>
+    <select class="sel focus" id="fyear" aria-label="Filter by year"><option value="all">All years</option>${yopts}</select>
+    <select class="sel focus" id="ftag" aria-label="Filter by tag"><option value="all">All tags</option>${topts}</select>
+    ${PUBLIC?"":`<select class="sel focus" id="fperson" aria-label="Filter by who you went with">
+      <option value="all">Anyone</option>
+      <option value="__solo"${ui.person==="__solo"?" selected":""}>Solo shows (${soloCount()})</option>${popts}</select>`}
+    <select class="sel focus" id="fsort" aria-label="Sort shows">
+      <option value="newest"${ui.sort==="newest"?" selected":""}>Newest first</option>
+      <option value="oldest"${ui.sort==="oldest"?" selected":""}>Oldest first</option>
+      <option value="artist"${ui.sort==="artist"?" selected":""}>Artist A–Z</option>
+      <option value="rated"${ui.sort==="rated"?" selected":""}>Highest rated</option></select>
+    <span class="menu"><button class="btn ghost focus" id="exp">Export ▾</button>
+      <div class="menupop ${ui.menuOpen?'':'hidden'}" id="expmenu">
+        <button data-exp="json">Download .json</button>
+        <button data-exp="csv">Download .csv</button>
+        <button data-exp="import">Import .json…</button>
+      </div></span>
+    <input type="file" id="importfile" accept="application/json,.json" class="hidden"/>
+    </div>`;
+
+  /* count + active pick */
+  h+=`<div style="margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+    <span class="count">Showing ${vis.length} of ${items.length}</span>`;
+  if(ui.pick)h+=`<button class="chip focus" style="border-color:var(--blue)" id="clearpick">${esc(ui.pick.type)}: ${esc(ui.pick.value)} <span class="n">×</span></button>`;
+  h+=`</div>`;
+
+  /* list */
+  h+=`<div style="margin-top:16px">`;
+  if(!items.length){
+    h+=`<div class="empty"><p style="font-family:var(--display);font-size:28px;color:var(--blue);text-transform:uppercase">Nothing in the pile yet</p></div>`;
+  }else if(!vis.length){
+    h+=`<div class="empty"><p style="font-size:14px;color:var(--muted)">No shows match that. Try a shorter search, or reset the filters.</p>
+      <button class="act edit focus" id="reset" style="margin-top:12px">Reset filters</button></div>`;
+  }else{
+    h+=vis.map(stubEl).join("");
+  }
+  h+=`</div>`;
+  h+=PUBLIC?`<p class="foot">${items.length} shows · the public record — who I went with and what's ahead stay private</p>`
+    :`<p class="foot">${items.length} shows in this file · edits held in memory · Export to save a fresh copy</p>`;
+
+  el.innerHTML=h;
+  wire();
+  if(ui.draft)renderModal();
+}
+
+/* ---------- modal ---------- */
+function renderModal(){
+  const d=ui.draft;
+  const set=(k,v)=>{ui.draft[k]=v;};
+  const statusOpts=Object.keys(STATUS).map(k=>`<option value="${k}"${d.status===k?" selected":""}>${STATUS[k].label}</option>`).join("");
+  const wrap=document.createElement("div");
+  wrap.className="overlay";wrap.id="overlay";
+  wrap.innerHTML=`<div class="modal"><div class="sheet">
+    <div class="sheethead"><h2>${d.id?"Edit show":"Log a show"}</h2>
+      <button class="act focus" style="color:var(--muted)" id="mclose">Close</button></div>
+    <div class="grid">
+      <label class="fld col2"><span class="l">Artist / headliner</span><input id="f_band" value="${esc(d.band)}"/></label>
+      <label class="fld"><span class="l">Support acts</span><input id="f_support" value="${esc(d.support)}"/></label>
+      <label class="fld"><span class="l">Tour</span><input id="f_tour" value="${esc(d.tour)}"/></label>
+      <label class="fld"><span class="l">Venue</span><input id="f_venue" value="${esc(d.venue)}"/></label>
+      <label class="fld"><span class="l">City</span><input id="f_city" value="${esc(d.city)}"/><span class="h">e.g. Dallas, TX</span></label>
+      <label class="fld"><span class="l">Date</span><input type="date" id="f_date" value="${esc(d.date)}"/></label>
+      <label class="fld"><span class="l">Status</span><select id="f_status">${statusOpts}</select></label>
+      <label class="fld"><span class="l">Seat / section</span><input id="f_seat" value="${esc(d.seat)}"/></label>
+      <label class="fld"><span class="l">Who you went with</span><input id="f_companions" value="${esc(d.companions)}"/></label>
+      <label class="fld"><span class="l">Tags</span><input id="f_tags" value="${esc(d.tags)}"/><span class="h">comma separated</span></label>
+      <label class="fld col2"><span class="l">Rating (0–5)</span><input type="number" min="0" max="5" id="f_rating" value="${d.rating||0}"/></label>
+      <label class="fld col2"><span class="l">Link</span><input id="f_link" value="${esc(d.link)}"/></label>
+      <label class="fld col2"><span class="l">Notes</span><textarea rows="4" id="f_notes">${esc(d.notes)}</textarea></label>
+      <label class="fld col2"><span class="l">Open question</span><input id="f_question" value="${esc(d.question)}"/></label>
+    </div>
+    ${ui.formError?`<p class="err">${esc(ui.formError)}</p>`:""}
+    <div class="sheetacts"><button class="btn solid focus" id="msave">Save show</button>
+      <button class="btn ghost focus" id="mcancel" style="border-color:transparent;color:var(--muted)">Cancel</button></div>
+  </div></div>`;
+  document.body.appendChild(wrap);
+
+  const g=id=>document.getElementById(id);
+  ["band","support","tour","venue","city","date","status","seat","companions","tags","link","notes","question"]
+    .forEach(k=>{const e=g("f_"+k);if(e)e.addEventListener("input",()=>set(k,e.value));});
+  g("f_rating").addEventListener("input",e=>set("rating",Number(e.target.value)||0));
+  g("mclose").onclick=g("mcancel").onclick=closeModal;
+  g("msave").onclick=saveDraft;
+}
+function closeModal(){ui.draft=null;ui.formError="";const o=document.getElementById("overlay");if(o)o.remove();}
+function saveDraft(){
+  const d=ui.draft;
+  if(!String(d.band).trim()){ui.formError="Add the artist's name to save this show.";
+    const o=document.getElementById("overlay");if(o)o.remove();renderModal();return;}
+  const clean={...d,band:d.band.trim(),rating:Number(d.rating)||0};
+  if(clean.id){items=items.map(i=>i.id===clean.id?clean:i);}
+  else{items=[...items,{...clean,id:uid()}];}
+  closeModal();render();
+}
+
+/* ---------- exports ---------- */
+function download(blob,name){
+  const url=URL.createObjectURL(blob);const a=document.createElement("a");
+  a.href=url;a.download=name;document.body.appendChild(a);a.click();document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+function exportJSON(){
+  const payload={exported:new Date().toISOString().slice(0,10),count:items.length,
+    items:[...items].sort((a,b)=>String(b.date).localeCompare(String(a.date)))};
+  download(new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}),"stub-pile-data.json");
+}
+function csvCell(v){const s=v==null?"":String(v);return /[",\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s;}
+function exportCSV(){
+  const cols=["date","band","support","tour","venue","city","status","seat","companions","tags","rating","link","notes","question"];
+  const rows=[...items].sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+  const body=rows.map(r=>cols.map(c=>csvCell(c==="tags"?tagList(r.tags).join(" / "):r[c])).join(",")).join("\n");
+  download(new Blob([cols.join(",")+"\n"+body],{type:"text/csv"}),"stub-pile.csv");
+}
+function importJSON(file){
+  const rd=new FileReader();
+  rd.onload=()=>{try{
+    const parsed=JSON.parse(rd.result);
+    const arr=Array.isArray(parsed)?parsed:parsed.items;
+    if(!Array.isArray(arr))throw new Error("no items array");
+    items=arr.map(d=>({...BLANK,...d,id:d.id||uid()}));
+    ui.pick=null;ui.openStat="";render();
+  }catch(e){alert("Could not read that file as Stub Pile data: "+e.message);}};
+  rd.readAsText(file);
+}
+
+/* ---------- events ---------- */
+function wire(){
+  const g=id=>document.getElementById(id);
+  const q=g("q");if(q)q.addEventListener("input",e=>{ui.query=e.target.value;
+    const pos=e.target.selectionStart;render();const nq=document.getElementById("q");
+    if(nq){nq.focus();try{nq.setSelectionRange(pos,pos);}catch(_){}}});
+  g("add").onclick=()=>{ui.draft={...BLANK};ui.formError="";render();};
+  g("fstatus").onchange=e=>{ui.status=e.target.value;render();};
+  g("fyear").onchange=e=>{ui.year=e.target.value;render();};
+  g("ftag").onchange=e=>{ui.tag=e.target.value;render();};
+  const fp=g("fperson");if(fp)fp.onchange=e=>{ui.person=e.target.value;render();};
+  g("fsort").onchange=e=>{ui.sort=e.target.value;render();};
+  g("exp").onclick=()=>{ui.menuOpen=!ui.menuOpen;render();};
+  const em=g("expmenu");
+  if(em)em.querySelectorAll("button").forEach(b=>b.onclick=()=>{
+    const kind=b.getAttribute("data-exp");ui.menuOpen=false;
+    if(kind==="json")exportJSON();else if(kind==="csv")exportCSV();
+    else if(kind==="import")g("importfile").click();
+    render();});
+  const imf=g("importfile");if(imf)imf.onchange=e=>{if(e.target.files[0])importJSON(e.target.files[0]);};
+  const cp=g("clearpick");if(cp)cp.onclick=()=>{ui.pick=null;render();};
+  const rs=g("reset");if(rs)rs.onclick=()=>{Object.assign(ui,{query:"",status:"all",year:"all",tag:"all",person:"all",pick:null});render();};
+  document.querySelectorAll("[data-stat]").forEach(b=>{
+    const key=b.getAttribute("data-stat");if(!key)return;
+    b.onclick=()=>{if(key==="__solo"){ui.person=ui.person==="__solo"?"all":"__solo";}
+      else{ui.openStat=ui.openStat===key?"":key;}render();};
+  });
+  document.querySelectorAll("[data-pick]").forEach(b=>{
+    b.onclick=()=>{const type=b.getAttribute("data-pick"),val=b.getAttribute("data-val");
+      ui.pick=(ui.pick&&ui.pick.type===type&&ui.pick.value===val)?null:{type,value:val};render();};
+  });
+  document.querySelectorAll("[data-edit]").forEach(b=>{
+    b.onclick=()=>{const it=items.find(i=>i.id===b.getAttribute("data-edit"));
+      ui.draft={...BLANK,...it};ui.formError="";render();};
+  });
+  document.querySelectorAll("[data-del]").forEach(b=>{
+    b.onclick=()=>{const id=b.getAttribute("data-del");
+      if(b.getAttribute("data-armed")){items=items.filter(i=>i.id!==id);render();}
+      else{b.textContent="Delete for good";b.classList.add("delc");b.setAttribute("data-armed","1");
+        setTimeout(()=>{if(b.isConnected){b.textContent="Delete";b.classList.remove("delc");b.removeAttribute("data-armed");}},2500);}};
+  });
+}
+
+render();
+</script>
+</body>
+</html>
