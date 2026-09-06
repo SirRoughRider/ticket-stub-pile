@@ -1,6 +1,6 @@
 {
   "generated": "2026-09-06",
-  "count": 53,
+  "count": 59,
   "items": [
     {
       "date": "2026-08-21",
@@ -289,6 +289,19 @@
       "question": ""
     },
     {
+      "date": "2019-04-04",
+      "band": "Hamilton",
+      "support": "",
+      "tour": "Hamilton — national tour (Dallas Summer Musicals)",
+      "venue": "Music Hall at Fair Park",
+      "city": "Dallas, TX",
+      "status": "attended",
+      "tags": "musical, theater",
+      "rating": 0,
+      "notes": "Thursday night in the first Dallas engagement of the tour, Apr 2–May 5, 2019. Hamilton returned to the Music Hall in Nov–Dec 2021 and to the Winspear in May–Jun 2024.",
+      "question": ""
+    },
+    {
       "date": "2018-10-20",
       "band": "Blue October",
       "support": "Longwave",
@@ -364,6 +377,19 @@
       "tags": "metal",
       "rating": 0,
       "notes": "",
+      "question": ""
+    },
+    {
+      "date": "2017-03-23",
+      "band": "Wait Wait... Don't Tell Me!",
+      "support": "Peter Sagal, Bill Kurtis",
+      "tour": "NPR live taping",
+      "venue": "Music Hall at Fair Park",
+      "city": "Dallas, TX",
+      "status": "attended",
+      "tags": "comedy, radio, live taping",
+      "rating": 0,
+      "notes": "Thursday taping. The show had taped in Dallas before — Feb 7, 2013 at the Winspear, with Erykah Badu as the Not My Job guest — and once earlier still.",
       "question": ""
     },
     {
@@ -536,6 +562,19 @@
       "question": ""
     },
     {
+      "date": "2012-09-13",
+      "band": "Adam Carolla",
+      "support": "Dennis Prager (co-bill)",
+      "tour": "An Evening with Adam Carolla & Dennis Prager",
+      "venue": "Majestic Theatre",
+      "city": "Dallas, TX",
+      "status": "attended",
+      "tags": "comedy, spoken word",
+      "rating": 0,
+      "notes": "Thursday, 8 pm. The Tampa and Dallas nights of this tour were released as a live album.",
+      "question": "Confirm the companion on this night vs. the 2010 Addison show."
+    },
+    {
       "date": "2011-11-12",
       "band": "Five Finger Death Punch",
       "support": "All That Remains, Hatebreed, Rains",
@@ -573,6 +612,19 @@
       "rating": 0,
       "notes": "",
       "question": ""
+    },
+    {
+      "date": "2010-10-06",
+      "band": "Adam Carolla",
+      "support": "",
+      "tour": "",
+      "venue": "Addison Improv",
+      "city": "Addison, TX",
+      "status": "attended",
+      "tags": "comedy",
+      "rating": 0,
+      "notes": "Wednesday; second night of a two-night, two-shows-a-night run (Oct 5–6, 8 and 10 pm). Carolla's first time performing in the Dallas area, a month before his first book came out. Remembered as Dallas — the Improv is in Addison.",
+      "question": "8 pm or 10 pm show, and who came along?"
     },
     {
       "date": "2009-11-02",
@@ -690,6 +742,32 @@
       "rating": 0,
       "notes": "First tour in 12 years with the original four. Falls inside the window they were recording for the live album '7 Weeks: Live in America, 2003.'",
       "question": ""
+    },
+    {
+      "date": "",
+      "band": "Jay London",
+      "support": "",
+      "tour": "",
+      "venue": "Addison Improv",
+      "city": "Addison, TX",
+      "status": "attended",
+      "tags": "comedy, one-liners",
+      "rating": 0,
+      "notes": "The long-haired one-liner act from Last Comic Standing.",
+      "question": "Which year?"
+    },
+    {
+      "date": "",
+      "band": "Alonzo Bodden",
+      "support": "",
+      "tour": "",
+      "venue": "Addison Improv",
+      "city": "Addison, TX",
+      "status": "attended",
+      "tags": "comedy",
+      "rating": 0,
+      "notes": "",
+      "question": "Which year? The Improv books him regularly, so a season or what else was going on then would pin it."
     }
   ]
 }

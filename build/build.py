@@ -125,16 +125,16 @@ def public_rows(items, today):
 def public_md(rows, today):
     by_year = {}
     for r in rows:
-        by_year.setdefault(r["date"][:4], []).append(r)
+        by_year.setdefault(r["date"][:4] or "Undated", []).append(r)
     out = ["# Concert history", "",
            f"{len(rows)} shows, {len({r['band'] for r in rows})} artists. "
            f"Generated {today} from the private master — see the README for what is and isn't published here.", ""]
-    for y in sorted(by_year, reverse=True):
+    for y in sorted(by_year, key=lambda k: (k != "Undated", k), reverse=True):
         out.append(f"## {y}")
         out.append("")
         for r in by_year[y]:
             d = r["date"].split("-")
-            when = f"{MONTHS[int(d[1]) - 1]} {int(d[2])}"
+            when = f"{MONTHS[int(d[1]) - 1]} {int(d[2])}" if len(d) == 3 else "date unknown"
             line = f"- **{when}** — **{r['band']}**"
             place = " · ".join(x for x in (r["venue"], r["city"]) if x)
             if place:

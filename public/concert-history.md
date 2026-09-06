@@ -1,6 +1,6 @@
 # Concert history
 
-53 shows, 42 artists. Generated 2026-09-06 from the private master — see the README for what is and isn't published here.
+59 shows, 47 artists. Generated 2026-09-06 from the private master — see the README for what is and isn't published here.
 
 ## 2026
 
@@ -78,6 +78,8 @@
 - **Apr 26** — **Killswitch Engage** — South Side Ballroom · Dallas, TX _(Collapse the World Tour)_
   - with Parkway Drive (co-headline), After the Burial, Vein.fm
   - Co-headliners alternated closing — likely the night you missed one of them.
+- **Apr 4** — **Hamilton** — Music Hall at Fair Park · Dallas, TX _(Hamilton — national tour (Dallas Summer Musicals))_
+  - Thursday night in the first Dallas engagement of the tour, Apr 2–May 5, 2019. Hamilton returned to the Music Hall in Nov–Dec 2021 and to the Winspear in May–Jun 2024.
 
 ## 2018
 
@@ -98,6 +100,9 @@
 
 - **Jun 16** — **Metallica** — AT&T Stadium · Arlington, TX _(WorldWired Tour)_
   - with Avenged Sevenfold, Local H, Mix Master Mike
+- **Mar 23** — **Wait Wait... Don't Tell Me!** — Music Hall at Fair Park · Dallas, TX _(NPR live taping)_
+  - with Peter Sagal, Bill Kurtis
+  - Thursday taping. The show had taped in Dallas before — Feb 7, 2013 at the Winspear, with Erykah Badu as the Not My Job guest — and once earlier still.
 
 ## 2016
 
@@ -147,6 +152,9 @@
 - **Dec 2** — **Killswitch Engage** — Trees · Dallas, TX _(Co-headline tour with Shadows Fall)_
   - with Shadows Fall (co-headline)
   - Logged as Dec 3 - the show was Dec 2. Jesse Leach's first year back on vocals. This is also the Shadows Fall sighting.
+- **Sep 13** — **Adam Carolla** — Majestic Theatre · Dallas, TX _(An Evening with Adam Carolla & Dennis Prager)_
+  - with Dennis Prager (co-bill)
+  - Thursday, 8 pm. The Tampa and Dallas nights of this tour were released as a live album.
 
 ## 2011
 
@@ -158,6 +166,11 @@
   - Identified from the skull mic stand - Zakk Wylde's, and unmistakable. Six months before you saw All That Remains again supporting FFDP.
 - **Jan 20** — **Ozzy Osbourne** — American Airlines Center · Dallas, TX _(Scream World Tour)_
   - with Slash
+
+## 2010
+
+- **Oct 6** — **Adam Carolla** — Addison Improv · Addison, TX
+  - Wednesday; second night of a two-night, two-shows-a-night run (Oct 5–6, 8 and 10 pm). Carolla's first time performing in the Dallas area, a month before his first book came out. Remembered as Dallas — the Improv is in Addison.
 
 ## 2009
 
@@ -201,4 +214,10 @@
 
 - **Nov 2** — **Stryper** — Ridglea Theater · Fort Worth, TX _(Reunion Tour)_
   - First tour in 12 years with the original four. Falls inside the window they were recording for the live album '7 Weeks: Live in America, 2003.'
+
+## Undated
+
+- **date unknown** — **Jay London** — Addison Improv · Addison, TX
+  - The long-haired one-liner act from Last Comic Standing.
+- **date unknown** — **Alonzo Bodden** — Addison Improv · Addison, TX
 
