@@ -1,14 +1,15 @@
-# Stub Pile — a concert history
+# Ticket Stub Pile
 
 *The music we love, and the nights we were there.*
 
-A verified log of live shows, kept two ways:
+A verified log of nights out — concerts mostly, plus comedy, theater and the odd radio
+taping — kept two ways:
 
 - **The private record** — every show, who came along, seats, links, and what's coming up.
   It lives only on my computer.
 - **The public record** — the shows I've been to (and the odd one I missed), with the people
   and the future stripped out. That's what this repository publishes: browse
-  [`public/concert-history.md`](public/concert-history.md), or open the tracker at the
+  [`public/ticket-stub-pile.md`](public/ticket-stub-pile.md), or open the tracker at the
   GitHub Pages site (`docs/index.html`).
 
 The method for researching a half-remembered show — pinning a band and a rough date to a
@@ -20,7 +21,7 @@ found — is a Claude skill in [`.claude/skills/concert-history/`](.claude/skill
 ```
 stub-pile-data.json     PRIVATE master (git-ignored). Single source of truth.
 build/                  build.py + page templates. Turns the master into everything below.
-public/                 concert-history.json / .csv / .md — the public rows. Generated.
+public/                 ticket-stub-pile.json / .csv / .md — the public rows. Generated.
 docs/index.html         the tracker page, public data only. Generated. Served by GitHub Pages.
 .claude/skills/         the concert-history skill (method, schema, privacy contract).
 scripts/pre-commit      guard: no private files, no stale outputs, no names in public files.

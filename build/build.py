@@ -17,9 +17,9 @@ Private outputs (beside the master; never committed)
   stub-pile-shows.jsx          SHOWS array only
 
 Public outputs (safe to commit / publish)
-  public/concert-history.json  attended + missed shows only, companions stripped
-  public/concert-history.csv   same rows, flat
-  public/concert-history.md    same rows, grouped by year, human-readable
+  public/ticket-stub-pile.json  attended + missed shows only, companions stripped
+  public/ticket-stub-pile.csv   same rows, flat
+  public/ticket-stub-pile.md    same rows, grouped by year, human-readable
   docs/index.html              tracker page baked with the PUBLIC data (GitHub Pages)
 
 Privacy rules applied to the public set (see README):
@@ -126,7 +126,7 @@ def public_md(rows, today):
     by_year = {}
     for r in rows:
         by_year.setdefault(r["date"][:4] or "Undated", []).append(r)
-    out = ["# Concert history", "",
+    out = ["# Ticket Stub Pile", "",
            f"{len(rows)} shows, {len({r['band'] for r in rows})} artists. "
            f"Generated {today} from the private master — see the README for what is and isn't published here.", ""]
     for y in sorted(by_year, key=lambda k: (k != "Undated", k), reverse=True):
@@ -205,9 +205,9 @@ def main():
         print("Reword the note in stub-pile-data.json (or remove the name) and rebuild.", file=sys.stderr)
         sys.exit(2)
     pub_json = json.dumps({"generated": a.today, "count": len(rows), "items": rows}, indent=2, ensure_ascii=False) + "\n"
-    write(os.path.join(ROOT, "public", "concert-history.json"), pub_json, outputs, a.check)
-    write(os.path.join(ROOT, "public", "concert-history.csv"), public_csv(rows), outputs, a.check)
-    write(os.path.join(ROOT, "public", "concert-history.md"), public_md(rows, a.today) + "\n", outputs, a.check)
+    write(os.path.join(ROOT, "public", "ticket-stub-pile.json"), pub_json, outputs, a.check)
+    write(os.path.join(ROOT, "public", "ticket-stub-pile.csv"), public_csv(rows), outputs, a.check)
+    write(os.path.join(ROOT, "public", "ticket-stub-pile.md"), public_md(rows, a.today) + "\n", outputs, a.check)
     pub_items = [{**{k: "" for k in ALL_FIELDS}, "rating": 0, **r, "id": seed_id(r["band"], r["date"])} for r in rows]
     write(os.path.join(ROOT, "docs", "index.html"),
           fill(html_t, json.dumps(pub_items, indent=2, ensure_ascii=False), len(rows), a.today, public=True), outputs, a.check)

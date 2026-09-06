@@ -15,7 +15,7 @@ jobs:
         run: |
           python3 - <<'PY'
           import json, datetime, sys
-          d = json.load(open("public/concert-history.json"))
+          d = json.load(open("public/ticket-stub-pile.json"))
           today = datetime.date.today().isoformat()
           bad = [r for r in d["items"] if r.get("companions") or r.get("seat") or r.get("link")
                  or r["status"] not in ("attended", "missed") or r["date"] > today]

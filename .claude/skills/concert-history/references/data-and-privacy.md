@@ -17,9 +17,9 @@ stub-pile-data.json        PRIVATE master — the only file you edit by hand. Gi
 stub-pile.html             PRIVATE tracker, all data baked in. Git-ignored. Generated.
 stub-pile.jsx              PRIVATE React tracker. Git-ignored. Generated.
 stub-pile-shows.jsx        PRIVATE SHOWS array only. Git-ignored. Generated.
-public/concert-history.json   public rows. Committed. Generated.
-public/concert-history.csv    same rows, flat. Committed. Generated.
-public/concert-history.md     same rows by year, readable. Committed. Generated.
+public/ticket-stub-pile.json   public rows. Committed. Generated.
+public/ticket-stub-pile.csv    same rows, flat. Committed. Generated.
+public/ticket-stub-pile.md     same rows by year, readable. Committed. Generated.
 docs/index.html            public tracker page for GitHub Pages. Committed. Generated.
 build/build.py             the generator. build/*.tmpl are the page templates.
 ```

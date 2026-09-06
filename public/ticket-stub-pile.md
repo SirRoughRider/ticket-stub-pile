@@ -1,4 +1,4 @@
-# Concert history
+# Ticket Stub Pile
 
 59 shows, 47 artists. Generated 2026-09-06 from the private master — see the README for what is and isn't published here.
 
