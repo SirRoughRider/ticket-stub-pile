@@ -55,7 +55,6 @@
   - Logged as Nov 9 — the Arlington show was Nov 8. First tour with Emily Armstrong; sold out at 31,962.
 - **Oct 2** — **Flat Black** — Texas Trust CU Theatre · Grand Prairie, TX
   - headliner: Godsmack
-  - also on the bill: Godsmack (headline)
   - Five weeks before the Linkin Park show. Same room as Weird Al, Tool and FFDP under its earlier names.
 
 ## 2023
@@ -70,7 +69,7 @@
   - Deliberately bare-bones — no costumes, props or video screens. Originals and deep cuts rather than the parodies, different setlist every night.
 - **Aug 30** — **Megadeth** — Dos Equis Pavilion · Dallas, TX _(2022 co-headline tour)_
   - headliner: Five Finger Death Punch
-  - also on the bill: Five Finger Death Punch (headline), The HU, Fire From the Gods
+  - also on the bill: The HU, Fire From the Gods
   - Logged as Aug 31 — the Dallas show was Aug 30. Your third time seeing FFDP.
 
 ## 2021
@@ -193,7 +192,7 @@
 
 - **Jul 25** — **Five Finger Death Punch** — Superpages.com Center · Dallas, TX _(Rockstar Energy Mayhem Festival 2008)_
   - headliner: Slipknot
-  - also on the bill: Main stage: Slipknot, Disturbed, Mastodon, DragonForce. Jagermeister stage: Machine Head, Airbourne. Hot Topic stage: Underoath, Suicide Silence, 36 Crazyfists, Black Tide, The Red Chord
+  - also on the bill: Main stage: Slipknot (headliner), Disturbed, Mastodon, DragonForce. Jagermeister stage: Machine Head, Airbourne. Hot Topic stage: Underoath, Suicide Silence, 36 Crazyfists, Black Tide, The Red Chord
   - Inaugural Mayhem Fest, three stages. FFDP on the Jägermeister stage — their festival debut, ~30 min set. Venue was the old Smirnoff Music Centre.
 - **Apr 24** — **Van Halen** — American Airlines Center · Dallas, TX _(North American Tour 2007–2008)_
   - also on the bill: Ryan Shaw
