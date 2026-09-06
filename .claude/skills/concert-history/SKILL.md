@@ -25,7 +25,7 @@ the updated JSON, and remind them to drop it in as the master and rebuild.
 
 ## Record schema (one object per show)
 
-`band`, `support` (comma list; parentheticals allowed), `tour`, `venue` (the name on the
+`band`, `headliner` (only when it wasn't `band`), `support` (comma list; parentheticals allowed), `tour`, `venue` (the name on the
 ticket that night), `city` (`City, ST`), `date` (`YYYY-MM-DD`, may be empty if unknown),
 `status`, `seat`, `companions` (comma list — **the only field where a person's name may
 appear**), `tags` (comma list), `rating` (0–5), `link`, `notes`, `question`, `id`.
@@ -51,6 +51,7 @@ published, and only with a date that has passed. Public copies drop `seat`, `com
 - **Status tells the truth about attendance.** `tickets` → `attended` after the night, or → `missed` if they didn't go. A missed show is kept, not deleted — it is still a band they want to see. Drop the `upcoming` tag when the status changes.
 - **Deletions are deliberate.** Only remove a row when asked. Don't re-add a show that was removed.
 - **Not-music is fine.** Comedy, culinary, theater, radio tapings and similar nights go in the same log with a descriptive tag (`comedy`, `food`, `musical`, `live taping`); the stats treat every row as a night out.
+- **Every row gets its bill.** Research the full lineup for every show, not just the headliner: `headliner` when the person's act didn't close the night, everyone else in `support`, co-headlines tagged `(co-headline)` in `support`. A show with no opener is recorded as such in `notes` ("No opener") so it isn't re-researched. Sweep periodically for rows with an empty `support` and no such note.
 - **Names stay in `companions`.** Never write a companion's name into `notes`, `tour`, `support` or `question` — those fields are published. The build refuses to run if one slips through, and "my wife"-style phrasing is just as much a leak.
 - **Dates come from the person; corrections come from sources.** When research moves a date, keep the original in a note ("Logged as Aug 31 — the Dallas show was Aug 30").
 

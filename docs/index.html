@@ -90,6 +90,8 @@
   .place{font-family:var(--mono);font-size:12px;margin:8px 0 0;word-break:break-word;}
   .now{font-family:var(--mono);font-size:10px;color:var(--muted);margin:2px 0 0;}
   .tour{font-family:var(--mono);font-size:11px;color:var(--muted);margin:4px 0 0;}
+  .head{margin:8px 0 0;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--pink);}
+  .head b{font-family:var(--body);font-size:14px;letter-spacing:0;text-transform:none;color:var(--ink);font-weight:normal;}
   .sub{margin-top:12px;}
   .sublab{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
   .bill{margin-top:4px;display:flex;flex-wrap:wrap;gap:2px 8px;font-size:14px;}
@@ -151,6 +153,7 @@
 const DATA = [
   {
     "band": "Avenged Sevenfold",
+    "headliner": "",
     "support": "Good Charlotte",
     "tour": "North American Tour 2026",
     "venue": "Dos Equis Pavilion",
@@ -168,8 +171,9 @@ const DATA = [
   },
   {
     "band": "Muse",
-    "support": "",
-    "tour": "",
+    "headliner": "",
+    "support": "Portugal. The Man, The Temper Trap",
+    "tour": "The Wow! Signal Tour",
     "venue": "Dos Equis Pavilion",
     "city": "Dallas, TX",
     "date": "2026-08-14",
@@ -179,12 +183,13 @@ const DATA = [
     "tags": "alt rock",
     "rating": 0,
     "link": "",
-    "notes": "",
+    "notes": "Portugal. The Man and The Temper Trap opened. Map of the Problematique carried a Rage Against the Machine 'Calm Like a Bomb' outro; 'Hanging in Victory Square' got a rare half-performance.",
     "question": "",
     "id": "seed-muse-2026-08-14"
   },
   {
     "band": "Poppy",
+    "headliner": "",
     "support": "LANDMVRKS, Thousand Below",
     "tour": "Constantly Nowhere Tour",
     "venue": "House of Blues",
@@ -202,7 +207,8 @@ const DATA = [
   },
   {
     "band": "The Pretty Reckless",
-    "support": "",
+    "headliner": "",
+    "support": "Paris Jackson, doug.",
     "tour": "Dear God Tour",
     "venue": "House of Blues",
     "city": "Dallas, TX",
@@ -213,12 +219,13 @@ const DATA = [
     "tags": "hard rock",
     "rating": 0,
     "link": "",
-    "notes": "",
+    "notes": "Paris Jackson and doug. opened; one song got its live debut that night.",
     "question": "",
     "id": "seed-theprettyr-2026-07-25"
   },
   {
     "band": "Nine Inch Nails",
+    "headliner": "",
     "support": "Boys Noize",
     "tour": "Peel It Back",
     "venue": "Moody Center",
@@ -236,6 +243,7 @@ const DATA = [
   },
   {
     "band": "Sevendust",
+    "headliner": "",
     "support": "Cory Marks",
     "tour": "Southside Double-Wide Tour",
     "venue": "Texas Theatre",
@@ -253,6 +261,7 @@ const DATA = [
   },
   {
     "band": "Three Days Grace",
+    "headliner": "",
     "support": "Return to Dust",
     "tour": "Co-headline with Breaking Benjamin",
     "venue": "Dickies Arena",
@@ -270,6 +279,7 @@ const DATA = [
   },
   {
     "band": "Shinedown",
+    "headliner": "",
     "support": "Bush, Morgan Wade",
     "tour": "Dance, Kid, Dance Tour",
     "venue": "Dickies Arena",
@@ -287,6 +297,7 @@ const DATA = [
   },
   {
     "band": "Toto",
+    "headliner": "",
     "support": "Christopher Cross, Men at Work",
     "tour": "2025 American Summer Tour",
     "venue": "The Pavilion at Toyota Music Factory",
@@ -304,6 +315,7 @@ const DATA = [
   },
   {
     "band": "Ghost",
+    "headliner": "",
     "support": "",
     "tour": "Skeletour World Tour 2025",
     "venue": "Dickies Arena",
@@ -315,12 +327,13 @@ const DATA = [
     "tags": "metal",
     "rating": 0,
     "link": "",
-    "notes": "Phone-free show — no photos allowed.",
+    "notes": "Phone-free show — no photos allowed. No opener — Ghost played the whole night",
     "question": "",
     "id": "seed-ghost-2025-08-15"
   },
   {
     "band": "\"Weird Al\" Yankovic",
+    "headliner": "",
     "support": "Puddles Pity Party",
     "tour": "Bigger & Weirder 2025",
     "venue": "Texas Trust CU Theatre",
@@ -338,6 +351,7 @@ const DATA = [
   },
   {
     "band": "Volbeat",
+    "headliner": "",
     "support": "Halestorm, The Ghost Inside",
     "tour": "Greatest of All Tours Worldwide",
     "venue": "The Pavilion at Toyota Music Factory",
@@ -355,6 +369,7 @@ const DATA = [
   },
   {
     "band": "Parkway Drive",
+    "headliner": "",
     "support": "Rotating headliners: Beartooth, I Prevail, Killswitch Engage. Support: The Devil Wears Prada, The Amity Affliction, Alpha Wolf. Opener: TX2",
     "tour": "Summer of Loud 2025",
     "venue": "Dos Equis Pavilion",
@@ -372,6 +387,7 @@ const DATA = [
   },
   {
     "band": "Disturbed",
+    "headliner": "",
     "support": "Daughtry, Nothing More",
     "tour": "The Sickness 25th Anniversary Tour",
     "venue": "Dickies Arena",
@@ -389,6 +405,7 @@ const DATA = [
   },
   {
     "band": "Linkin Park",
+    "headliner": "",
     "support": "Bad Omens, Helmet, Jean Dawson",
     "tour": "From Zero World Tour",
     "venue": "Globe Life Field",
@@ -406,6 +423,7 @@ const DATA = [
   },
   {
     "band": "Flat Black",
+    "headliner": "Godsmack",
     "support": "Godsmack (headline)",
     "tour": "",
     "venue": "Texas Trust CU Theatre",
@@ -423,6 +441,7 @@ const DATA = [
   },
   {
     "band": "Trivium",
+    "headliner": "",
     "support": "Beartooth (co-headline), Malevolence, Archetypes Collide",
     "tour": "The TrivTooth Tour",
     "venue": "The Factory in Deep Ellum",
@@ -440,6 +459,7 @@ const DATA = [
   },
   {
     "band": "\"Weird Al\" Yankovic",
+    "headliner": "",
     "support": "Emo Philips",
     "tour": "The Unfortunate Return of the Ridiculously Self-Indulgent, Ill-Advised Vanity Tour",
     "venue": "Majestic Theatre",
@@ -457,6 +477,7 @@ const DATA = [
   },
   {
     "band": "Megadeth",
+    "headliner": "Five Finger Death Punch",
     "support": "Five Finger Death Punch (headline), The HU, Fire From the Gods",
     "tour": "2022 co-headline tour",
     "venue": "Dos Equis Pavilion",
@@ -474,6 +495,7 @@ const DATA = [
   },
   {
     "band": "Trans-Siberian Orchestra",
+    "headliner": "",
     "support": "",
     "tour": "2021 Winter Tour",
     "venue": "American Airlines Center",
@@ -485,13 +507,14 @@ const DATA = [
     "tags": "symphonic rock, holiday",
     "rating": 0,
     "link": "",
-    "notes": "Two shows that day — 3:30 pm matinee and 8:00 pm. TSO's return after the 2020 tour was cancelled.",
+    "notes": "Two shows that day — 3:30 pm matinee and 8:00 pm. TSO's return after the 2020 tour was cancelled. No opener, as ever with TSO",
     "question": "",
     "id": "seed-transsiber-2021-12-11"
   },
   {
     "band": "Sevendust",
-    "support": "",
+    "headliner": "",
+    "support": "Even the Dead Love a Parade, DownLo, Crankfish",
     "tour": "",
     "venue": "Bomb Factory",
     "city": "Dallas, TX",
@@ -502,12 +525,13 @@ const DATA = [
     "tags": "metal",
     "rating": 0,
     "link": "",
-    "notes": "",
+    "notes": "Short Texas/Oklahoma run between Houston (Sep 6) and Tulsa (Sep 7). Three local openers; set opened with 'Dirty' from All I See Is War.",
     "question": "",
     "id": "seed-sevendust-2019-09-08"
   },
   {
     "band": "Killswitch Engage",
+    "headliner": "",
     "support": "Parkway Drive (co-headline), After the Burial, Vein.fm",
     "tour": "Collapse the World Tour",
     "venue": "South Side Ballroom",
@@ -525,6 +549,7 @@ const DATA = [
   },
   {
     "band": "Hamilton",
+    "headliner": "",
     "support": "",
     "tour": "Hamilton — national tour (Dallas Summer Musicals)",
     "venue": "Music Hall at Fair Park",
@@ -536,12 +561,13 @@ const DATA = [
     "tags": "musical, theater",
     "rating": 0,
     "link": "",
-    "notes": "Thursday night in the first Dallas engagement of the tour, Apr 2–May 5, 2019. Hamilton returned to the Music Hall in Nov–Dec 2021 and to the Winspear in May–Jun 2024.",
+    "notes": "Thursday night in the first Dallas engagement of the tour, Apr 2–May 5, 2019. Hamilton returned to the Music Hall in Nov–Dec 2021 and to the Winspear in May–Jun 2024. No opener — a stage musical",
     "question": "",
     "id": "seed-hamilton-2019-04-04"
   },
   {
     "band": "Blue October",
+    "headliner": "",
     "support": "Longwave",
     "tour": "I Hope You're Happy Tour",
     "venue": "The Pavilion at Toyota Music Factory",
@@ -559,6 +585,7 @@ const DATA = [
   },
   {
     "band": "Journey",
+    "headliner": "",
     "support": "Def Leppard (co-headline)",
     "tour": "Def Leppard & Journey 2018 Tour",
     "venue": "American Airlines Center",
@@ -576,6 +603,7 @@ const DATA = [
   },
   {
     "band": "Seether",
+    "headliner": "",
     "support": "10 Years, The Dead Deads",
     "tour": "Poison the Parish World Tour",
     "venue": "The Bomb Factory",
@@ -593,6 +621,7 @@ const DATA = [
   },
   {
     "band": "Highly Suspect",
+    "headliner": "",
     "support": "The Unlikely Candidates",
     "tour": "",
     "venue": "The Bomb Factory",
@@ -610,6 +639,7 @@ const DATA = [
   },
   {
     "band": "AWOLNATION",
+    "headliner": "",
     "support": "Nothing But Thieves, Irontom",
     "tour": "Here Come the Runts Tour",
     "venue": "The Pavilion at Toyota Music Factory",
@@ -627,6 +657,7 @@ const DATA = [
   },
   {
     "band": "Metallica",
+    "headliner": "",
     "support": "Avenged Sevenfold, Local H, Mix Master Mike",
     "tour": "WorldWired Tour",
     "venue": "AT&T Stadium",
@@ -644,6 +675,7 @@ const DATA = [
   },
   {
     "band": "Wait Wait... Don't Tell Me!",
+    "headliner": "",
     "support": "Peter Sagal, Bill Kurtis",
     "tour": "NPR live taping",
     "venue": "Music Hall at Fair Park",
@@ -661,6 +693,7 @@ const DATA = [
   },
   {
     "band": "Five Finger Death Punch",
+    "headliner": "",
     "support": "Shinedown (co-headline), Sixx:A.M., As Lions",
     "tour": "Fall Arena Tour 2016",
     "venue": "Verizon Theatre at Grand Prairie",
@@ -678,6 +711,7 @@ const DATA = [
   },
   {
     "band": "Angel Vivaldi",
+    "headliner": "",
     "support": "Gus G (co-headline)",
     "tour": "Operation: Domination",
     "venue": "The Rail Club",
@@ -695,6 +729,7 @@ const DATA = [
   },
   {
     "band": "Disturbed",
+    "headliner": "",
     "support": "Breaking Benjamin, Alter Bridge, Saint Asonia",
     "tour": "Immortalized Tour",
     "venue": "Gexa Energy Pavilion",
@@ -712,6 +747,7 @@ const DATA = [
   },
   {
     "band": "Guns N' Roses",
+    "headliner": "",
     "support": "The Cult",
     "tour": "Not in This Lifetime Tour",
     "venue": "AT&T Stadium",
@@ -729,6 +765,7 @@ const DATA = [
   },
   {
     "band": "Tool",
+    "headliner": "",
     "support": "Primus, 3Teeth",
     "tour": "North American Tour 2016",
     "venue": "Verizon Theatre at Grand Prairie",
@@ -746,6 +783,7 @@ const DATA = [
   },
   {
     "band": "MxPx",
+    "headliner": "",
     "support": "Five Iron Frenzy",
     "tour": "",
     "venue": "Trees",
@@ -763,6 +801,7 @@ const DATA = [
   },
   {
     "band": "\"Weird Al\" Yankovic",
+    "headliner": "",
     "support": "",
     "tour": "The Mandatory World Tour",
     "venue": "Verizon Theatre at Grand Prairie",
@@ -774,12 +813,13 @@ const DATA = [
     "tags": "comedy rock",
     "rating": 0,
     "link": "",
-    "notes": "Behind Mandatory Fun. Same room you'd see him in again ten years later, by then renamed Texas Trust CU Theatre.",
+    "notes": "Behind Mandatory Fun. Same room you'd see him in again ten years later, by then renamed Texas Trust CU Theatre. No opener",
     "question": "",
     "id": "seed-weirdalyan-2015-08-21"
   },
   {
     "band": "Flaw",
+    "headliner": "",
     "support": "",
     "tour": "",
     "venue": "Trees",
@@ -797,6 +837,7 @@ const DATA = [
   },
   {
     "band": "Demon Hunter",
+    "headliner": "",
     "support": "RED (co-headline), Veridia",
     "tour": "Extremist summer North American tour",
     "venue": "The Door",
@@ -814,6 +855,7 @@ const DATA = [
   },
   {
     "band": "Sevendust",
+    "headliner": "",
     "support": "",
     "tour": "An Evening With Sevendust",
     "venue": "Trees",
@@ -825,12 +867,13 @@ const DATA = [
     "tags": "metal, acoustic",
     "rating": 0,
     "link": "",
-    "notes": "Acoustic tour for Time Travelers & Bonfires — their first acoustic run since 2004. Clint Lowery sang 'Hurt' on this tour only.",
+    "notes": "Acoustic tour for Time Travelers & Bonfires — their first acoustic run since 2004. Clint Lowery sang 'Hurt' on this tour only. No opener — 'An Evening With' means the band alone",
     "question": "",
     "id": "seed-sevendust-2014-04-05"
   },
   {
     "band": "Lacuna Coil",
+    "headliner": "",
     "support": "Sick Puppies (co-headline), Eyes Set to Kill, Cilver",
     "tour": "Revolver Hottest Chicks in Hard Rock Tour",
     "venue": "Gas Monkey Bar N' Grill",
@@ -848,6 +891,7 @@ const DATA = [
   },
   {
     "band": "Dropkick Murphys",
+    "headliner": "",
     "support": "",
     "tour": "Signed and Sealed in Blood era",
     "venue": "House of Blues",
@@ -860,11 +904,12 @@ const DATA = [
     "rating": 0,
     "link": "",
     "notes": "Identified from video. Originally logged as Feb 17.",
-    "question": "",
+    "question": "Who opened? Setlist archives don't hold this date.",
     "id": "seed-dropkickmu-2013-02-26"
   },
   {
     "band": "Killswitch Engage",
+    "headliner": "",
     "support": "Shadows Fall (co-headline)",
     "tour": "Co-headline tour with Shadows Fall",
     "venue": "Trees",
@@ -882,6 +927,7 @@ const DATA = [
   },
   {
     "band": "Adam Carolla",
+    "headliner": "",
     "support": "Dennis Prager (co-bill)",
     "tour": "An Evening with Adam Carolla & Dennis Prager",
     "venue": "Majestic Theatre",
@@ -899,6 +945,7 @@ const DATA = [
   },
   {
     "band": "Five Finger Death Punch",
+    "headliner": "",
     "support": "All That Remains, Hatebreed, Rains",
     "tour": "Share the Welt Tour",
     "venue": "Palladium Ballroom",
@@ -916,6 +963,7 @@ const DATA = [
   },
   {
     "band": "Black Label Society",
+    "headliner": "",
     "support": "All That Remains, Rev Theory, Anchored",
     "tour": "Fuse TV Uranium Tour",
     "venue": "House of Blues",
@@ -933,6 +981,7 @@ const DATA = [
   },
   {
     "band": "Ozzy Osbourne",
+    "headliner": "",
     "support": "Slash",
     "tour": "Scream World Tour",
     "venue": "American Airlines Center",
@@ -950,6 +999,7 @@ const DATA = [
   },
   {
     "band": "Adam Carolla",
+    "headliner": "",
     "support": "",
     "tour": "",
     "venue": "Addison Improv",
@@ -967,6 +1017,7 @@ const DATA = [
   },
   {
     "band": "AC/DC",
+    "headliner": "",
     "support": "The Answer",
     "tour": "Black Ice World Tour",
     "venue": "American Airlines Center",
@@ -984,6 +1035,7 @@ const DATA = [
   },
   {
     "band": "Metallica",
+    "headliner": "",
     "support": "Lamb of God, Gojira",
     "tour": "World Magnetic Tour",
     "venue": "American Airlines Center",
@@ -1001,6 +1053,7 @@ const DATA = [
   },
   {
     "band": "Five Finger Death Punch",
+    "headliner": "Slipknot",
     "support": "Main stage: Slipknot, Disturbed, Mastodon, DragonForce. Jagermeister stage: Machine Head, Airbourne. Hot Topic stage: Underoath, Suicide Silence, 36 Crazyfists, Black Tide, The Red Chord",
     "tour": "Rockstar Energy Mayhem Festival 2008",
     "venue": "Superpages.com Center",
@@ -1018,6 +1071,7 @@ const DATA = [
   },
   {
     "band": "Van Halen",
+    "headliner": "",
     "support": "Ryan Shaw",
     "tour": "North American Tour 2007–2008",
     "venue": "American Airlines Center",
@@ -1035,6 +1089,7 @@ const DATA = [
   },
   {
     "band": "Blue October",
+    "headliner": "",
     "support": "",
     "tour": "Foiled",
     "venue": "Lakewood Theater",
@@ -1047,11 +1102,12 @@ const DATA = [
     "rating": 0,
     "link": "",
     "notes": "The 29th, first of a two-night stand. Peak of the Foiled year, when Hate Me and Into the Ocean were everywhere.",
-    "question": "",
+    "question": "Who opened? Not in the archives for this date.",
     "id": "seed-blueoctobe-2006-11-29"
   },
   {
     "band": "Edgefest 15",
+    "headliner": "Staind",
     "support": "Staind, Hoobastank, Shinedown, Three Days Grace, 30 Seconds to Mars, Seether, Flyleaf, Trapt, Buckcherry, Nonpoint, Drowning Pool, Hawthorne Heights, Atreyu, 10 Years, Evans Blue, Blue October, The Toadies",
     "tour": "KDGE 102.1 The Edge",
     "venue": "Pizza Hut Park",
@@ -1069,6 +1125,7 @@ const DATA = [
   },
   {
     "band": "Megadeth",
+    "headliner": "",
     "support": "Dream Theater (co-headline), Fear Factory, Nevermore, Symphony X, Life of Agony, Dillinger Escape Plan",
     "tour": "Gigantour 2005",
     "venue": "Nokia Theatre at Grand Prairie",
@@ -1086,6 +1143,7 @@ const DATA = [
   },
   {
     "band": "Edgefest 13",
+    "headliner": "Evanescence",
     "support": "Evanescence, Seether, Finger Eleven, Three Days Grace, Saliva, Breaking Benjamin, Lit, Blue October, Burning Brides, The Vanished",
     "tour": "KDGE 102.1 The Edge",
     "venue": "Smirnoff Music Centre",
@@ -1103,6 +1161,7 @@ const DATA = [
   },
   {
     "band": "Stryper",
+    "headliner": "",
     "support": "",
     "tour": "Reunion Tour",
     "venue": "Ridglea Theater",
@@ -1115,11 +1174,12 @@ const DATA = [
     "rating": 0,
     "link": "",
     "notes": "First tour in 12 years with the original four. Falls inside the window they were recording for the live album '7 Weeks: Live in America, 2003.'",
-    "question": "",
+    "question": "Who opened? Sky Harbor joined part of the 2003 reunion tour; unconfirmed for Fort Worth.",
     "id": "seed-stryper-2003-11-02"
   },
   {
     "band": "Jay London",
+    "headliner": "",
     "support": "",
     "tour": "",
     "venue": "Addison Improv",
@@ -1137,6 +1197,7 @@ const DATA = [
   },
   {
     "band": "Alonzo Bodden",
+    "headliner": "",
     "support": "",
     "tour": "",
     "venue": "Addison Improv",
@@ -1198,7 +1259,7 @@ const STATUS={
   attended:{label:"Went",stamp:"ATTENDED",color:"var(--blue)"},
   missed:{label:"Missed it",stamp:"MISSED",color:"var(--muted)"},
 };
-const BLANK={band:"",support:"",tour:"",venue:"",city:"",date:"",status:"attended",
+const BLANK={band:"",headliner:"",support:"",tour:"",venue:"",city:"",date:"",status:"attended",
   seat:"",companions:"",tags:"",rating:0,link:"",notes:"",question:""};
 
 const norm=v=>String(v||"").trim().toLowerCase();
@@ -1266,7 +1327,7 @@ function visibleItems(){
       if(ui.pick.type==="city"&&(i.city||"").trim()!==ui.pick.value)return false;
     }
     if(!q)return true;
-    const hay=[i.band,i.support,i.tour,i.venue,i.city,i.companions,i.tags,i.notes,i.seat,i.date].join(" ").toLowerCase();
+    const hay=[i.band,i.headliner,i.support,i.tour,i.venue,i.city,i.companions,i.tags,i.notes,i.seat,i.date].join(" ").toLowerCase();
     return hay.includes(q);
   });
   out.sort((a,b)=>{
@@ -1343,6 +1404,9 @@ function stubEl(it){
     <p class="place">${esc([it.venue,it.city].filter(Boolean).join("  ·  ")||"Venue not set")}</p>`;
   if(renamed)h+=`<p class="now">now ${esc(renamed)}</p>`;
   if(it.tour||it.seat)h+=`<p class="tour">${esc([it.tour,it.seat].filter(Boolean).join("  ·  "))}</p>`;
+  const hl=String(it.headliner||"").trim();
+  if(hl&&norm(hl)!==norm(it.band))h+=`<p class="head">Headliner <b>${esc(hl)}</b></p>`;
+  else if(/\(co-headline\)/i.test(it.support||""))h+=`<p class="head">Co-headline</p>`;
   if(bill.length)h+=`<div class="sub"><span class="sublab">Also on the bill</span><div class="bill">`
     +bill.map((b,i)=>`<span>${esc(b)}${i<bill.length-1?' <span style="color:var(--pink)">·</span>':''}</span>`).join("")+`</div></div>`;
   if(!PUBLIC&&!crew.length&&it.status==="attended")h+=`<div class="solo"><span style="color:var(--pink)">✦</span> Flew solo</div>`;
@@ -1457,6 +1521,7 @@ function renderModal(){
       <button class="act focus" style="color:var(--muted)" id="mclose">Close</button></div>
     <div class="grid">
       <label class="fld col2"><span class="l">Artist / headliner</span><input id="f_band" value="${esc(d.band)}"/></label>
+      <label class="fld"><span class="l">Headliner (if not the artist above)</span><input id="f_headliner" value="${esc(d.headliner)}"/></label>
       <label class="fld"><span class="l">Support acts</span><input id="f_support" value="${esc(d.support)}"/></label>
       <label class="fld"><span class="l">Tour</span><input id="f_tour" value="${esc(d.tour)}"/></label>
       <label class="fld"><span class="l">Venue</span><input id="f_venue" value="${esc(d.venue)}"/></label>
@@ -1478,7 +1543,7 @@ function renderModal(){
   document.body.appendChild(wrap);
 
   const g=id=>document.getElementById(id);
-  ["band","support","tour","venue","city","date","status","seat","companions","tags","link","notes","question"]
+  ["band","headliner","support","tour","venue","city","date","status","seat","companions","tags","link","notes","question"]
     .forEach(k=>{const e=g("f_"+k);if(e)e.addEventListener("input",()=>set(k,e.value));});
   g("f_rating").addEventListener("input",e=>set("rating",Number(e.target.value)||0));
   g("mclose").onclick=g("mcancel").onclick=closeModal;
@@ -1508,7 +1573,7 @@ function exportJSON(){
 }
 function csvCell(v){const s=v==null?"":String(v);return /[",\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s;}
 function exportCSV(){
-  const cols=["date","band","support","tour","venue","city","status","seat","companions","tags","rating","link","notes","question"];
+  const cols=["date","band","headliner","support","tour","venue","city","status","seat","companions","tags","rating","link","notes","question"];
   const rows=[...items].sort((a,b)=>String(b.date).localeCompare(String(a.date)));
   const body=rows.map(r=>cols.map(c=>csvCell(c==="tags"?tagList(r.tags).join(" / "):r[c])).join(",")).join("\n");
   download(new Blob([cols.join(",")+"\n"+body],{type:"text/csv"}),"stub-pile.csv");

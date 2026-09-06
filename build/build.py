@@ -36,9 +36,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 
 PUBLIC_STATUSES = {"attended", "missed"}
-PUBLIC_FIELDS = ["date", "band", "support", "tour", "venue", "city", "status", "tags", "rating", "notes", "question"]
-SHOWS_KEYS = ["band", "date", "companions", "tags", "venue", "city", "tour", "support", "notes", "question", "status"]
-ALL_FIELDS = ["band", "support", "tour", "venue", "city", "date", "status", "seat",
+PUBLIC_FIELDS = ["date", "band", "headliner", "support", "tour", "venue", "city", "status", "tags", "rating", "notes", "question"]
+SHOWS_KEYS = ["band", "date", "companions", "tags", "venue", "city", "tour", "headliner", "support", "notes", "question", "status"]
+ALL_FIELDS = ["band", "headliner", "support", "tour", "venue", "city", "date", "status", "seat",
               "companions", "tags", "rating", "link", "notes", "question", "id"]
 
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -114,7 +114,7 @@ def public_rows(items, today):
         if r["date"] and r["date"] > today:
             continue
         pub = {k: r[k] for k in PUBLIC_FIELDS}
-        text = " ".join(str(pub.get(k, "")) for k in ("notes", "question", "tour", "support"))
+        text = " ".join(str(pub.get(k, "")) for k in ("notes", "question", "tour", "support", "headliner"))
         for n in sorted(names):
             if re.search(r"\b" + re.escape(n) + r"\b", text):
                 leaks.append((r["band"], r["date"], n))
@@ -126,7 +126,7 @@ def public_md(rows, today):
     by_year = {}
     for r in rows:
         by_year.setdefault(r["date"][:4] or "Undated", []).append(r)
-    out = ["# Ticket Stub Pile", "",
+    out = ["# Concert history", "",
            f"{len(rows)} shows, {len({r['band'] for r in rows})} artists. "
            f"Generated {today} from the private master — see the README for what is and isn't published here.", ""]
     for y in sorted(by_year, key=lambda k: (k != "Undated", k), reverse=True):
@@ -144,8 +144,10 @@ def public_md(rows, today):
             if r["status"] == "missed":
                 line += " — *missed*"
             out.append(line)
+            if r["headliner"] and r["headliner"].strip().lower() != r["band"].strip().lower():
+                out.append(f"  - headliner: {r['headliner']}")
             if r["support"]:
-                out.append(f"  - with {r['support']}")
+                out.append(f"  - also on the bill: {r['support']}")
             if r["notes"]:
                 out.append(f"  - {r['notes']}")
         out.append("")

@@ -37,6 +37,7 @@ const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "
 
 const BLANK = {
   band: "",
+  headliner: "",
   support: "",
   tour: "",
   venue: "",
@@ -78,6 +79,7 @@ const SEED = SHOWS.map((s) => ({
   venue: s.venue,
   city: s.city,
   tour: s.tour,
+  headliner: s.headliner || "",
   support: s.support,
   notes: s.notes,
   question: s.question || "",
@@ -98,7 +100,7 @@ function sync(items, synced) {
     );
     if (!s) return item;
     const out = { ...item };
-    ["venue", "city", "tour", "support", "notes", "question"].forEach((k) => {
+    ["venue", "city", "tour", "headliner", "support", "notes", "question"].forEach((k) => {
       if (!out[k] && s[k]) out[k] = s[k];
     });
     if (s.oldDate && out.date === s.oldDate) out.date = s.date;
@@ -148,7 +150,7 @@ function csvCell(v) {
 
 function toCSV(rows) {
   const cols = [
-    "date", "band", "support", "tour", "venue", "city", "status",
+    "date", "band", "headliner", "support", "tour", "venue", "city", "status",
     "seat", "companions", "tags", "rating", "link", "notes", "question",
   ];
   const head = cols.join(",");
@@ -160,7 +162,7 @@ function toCSV(rows) {
 
 const EXPORT_COLS = [
   ["date", "Date"], ["band", "Artist"], ["venue", "Venue"], ["city", "City"],
-  ["tour", "Tour"], ["support", "Support / bill"], ["companions", "Went with"],
+  ["tour", "Tour"], ["headliner", "Headliner"], ["support", "Support / bill"], ["companions", "Went with"],
   ["status", "Status"], ["seat", "Seat"], ["tags", "Tags"],
   ["rating", "Rating"], ["notes", "Notes"], ["question", "Open question"],
 ];
@@ -220,7 +222,7 @@ function exportJSON(rows) {
 function exportShowsArray(rows) {
   const keys = [
     "band", "date", "companions", "tags", "venue", "city",
-    "tour", "support", "notes", "question", "status",
+    "tour", "headliner", "support", "notes", "question", "status",
   ];
   const q = (v) => JSON.stringify(String(v === null || v === undefined ? "" : v));
   const objs = [...rows]
@@ -399,6 +401,14 @@ function exportDocx(rows) {
     const place = [r.venue, r.city].filter(Boolean).join(" · ");
     if (place) xml += para([{ text: place, size: 20 }], { indent: true, after: 30 });
     if (r.tour) xml += para([{ text: r.tour, size: 20, color: MUTED }], { indent: true, after: 30 });
+    if (r.headliner && r.headliner.trim().toLowerCase() !== String(r.band).trim().toLowerCase())
+      xml += para(
+        [
+          { text: "Headliner:  ", size: 20, color: PINK },
+          { text: r.headliner, size: 20, bold: true, color: INK },
+        ],
+        { indent: true, after: 30 }
+      );
     if (r.support)
       xml += para(
         [
@@ -627,6 +637,9 @@ function Stub({ item, onEdit, onDelete }) {
   const nowCalled = currentName(vrec);
   const renamed = nowCalled && norm(nowCalled) !== norm(item.venue) ? nowCalled : null;
   const missed = item.status === "missed";
+  const headliner = String(item.headliner || "").trim();
+  const otherHeadliner = headliner && norm(headliner) !== norm(item.band) ? headliner : null;
+  const coHeadline = !otherHeadliner && /\(co-headline\)/i.test(item.support || "");
 
   return (
     <article className="relative mb-3 flex" style={{ background: C.card, opacity: missed ? 0.72 : 1 }}>
@@ -695,6 +708,17 @@ function Stub({ item, onEdit, onDelete }) {
         {item.tour || item.seat ? (
           <p className="mt-1" style={{ fontFamily: F.mono, fontSize: 11, color: C.muted }}>
             {[item.tour, item.seat].filter(Boolean).join("  ·  ")}
+          </p>
+        ) : null}
+
+        {otherHeadliner || coHeadline ? (
+          <p className="mt-2 uppercase" style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.14em", color: C.pink }}>
+            {otherHeadliner ? "Headliner " : "Co-headline"}
+            {otherHeadliner ? (
+              <span className="normal-case" style={{ fontFamily: F.body, fontSize: 14, letterSpacing: 0, color: C.ink }}>
+                {otherHeadliner}
+              </span>
+            ) : null}
           </p>
         ) : null}
 
@@ -887,6 +911,9 @@ function StubForm({ draft, setDraft, onSave, onCancel, error }) {
                 <input className={input} style={inputStyle} value={draft.band} onChange={set("band")} />
               </Field>
             </div>
+            <Field label="Headliner" hint="only if it wasn't the artist above">
+              <input className={input} style={inputStyle} value={draft.headliner} onChange={set("headliner")} />
+            </Field>
             <Field label="Support acts">
               <input className={input} style={inputStyle} value={draft.support} onChange={set("support")} />
             </Field>
@@ -1339,7 +1366,7 @@ export default function StubPile() {
       }
       if (!q) return true;
       const hay = [
-        i.band, i.support, i.tour, i.venue, i.city,
+        i.band, i.headliner, i.support, i.tour, i.venue, i.city,
         i.companions, i.tags, i.notes, i.seat, i.date,
       ]
         .join(" ")

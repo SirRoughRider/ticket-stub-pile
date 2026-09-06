@@ -36,8 +36,9 @@ One object per show in `items`, newest first. The master file wraps them:
 
 | field | type | notes |
 |---|---|---|
-| `band` | string | the act the person names — headliner or the opener they came for |
-| `support` | string | everyone else on the bill, comma-separated; parentheticals allowed: `Shadows Fall (co-headline)` |
+| `band` | string | the act the person names — the headliner, or the opener they came for |
+| `headliner` | string | who closed the night, **only when it wasn't `band`** (e.g. band `Flat Black`, headliner `Godsmack`); empty otherwise. For festivals with a lead-act `band`, the main-stage closer. |
+| `support` | string | everyone else on the bill, comma-separated, best-known first; parentheticals allowed: `Shadows Fall (co-headline)`. Co-headlines are marked here, not in `headliner`. |
 | `tour` | string | tour or event name |
 | `venue` | string | the name on the ticket that night, not the current name |
 | `city` | string | `City, ST` |
@@ -73,7 +74,7 @@ When a show passes: `tickets` → `attended` or `missed`, and remove the `upcomi
 The public set is produced only by `build/build.py`, which:
 
 1. keeps rows whose status is `attended` or `missed` and whose date is not in the future;
-2. drops `seat`, `companions`, `link`, `id`;
+2. drops `seat`, `companions`, `link`, `id` (`headliner` and `support` are published);
 3. collects every name that appears in any `companions` field in the master and refuses to
    build if any of those names appears in a published field (`notes`, `question`, `tour`,
    `support`) — so a companion cannot leak through prose;

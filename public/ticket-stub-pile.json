@@ -5,6 +5,7 @@
     {
       "date": "2026-08-21",
       "band": "Avenged Sevenfold",
+      "headliner": "",
       "support": "Good Charlotte",
       "tour": "North American Tour 2026",
       "venue": "Dos Equis Pavilion",
@@ -18,19 +19,21 @@
     {
       "date": "2026-08-14",
       "band": "Muse",
-      "support": "",
-      "tour": "",
+      "headliner": "",
+      "support": "Portugal. The Man, The Temper Trap",
+      "tour": "The Wow! Signal Tour",
       "venue": "Dos Equis Pavilion",
       "city": "Dallas, TX",
       "status": "attended",
       "tags": "alt rock",
       "rating": 0,
-      "notes": "",
+      "notes": "Portugal. The Man and The Temper Trap opened. Map of the Problematique carried a Rage Against the Machine 'Calm Like a Bomb' outro; 'Hanging in Victory Square' got a rare half-performance.",
       "question": ""
     },
     {
       "date": "2026-08-12",
       "band": "Poppy",
+      "headliner": "",
       "support": "LANDMVRKS, Thousand Below",
       "tour": "Constantly Nowhere Tour",
       "venue": "House of Blues",
@@ -44,19 +47,21 @@
     {
       "date": "2026-07-25",
       "band": "The Pretty Reckless",
-      "support": "",
+      "headliner": "",
+      "support": "Paris Jackson, doug.",
       "tour": "Dear God Tour",
       "venue": "House of Blues",
       "city": "Dallas, TX",
       "status": "attended",
       "tags": "hard rock",
       "rating": 0,
-      "notes": "",
+      "notes": "Paris Jackson and doug. opened; one song got its live debut that night.",
       "question": ""
     },
     {
       "date": "2026-03-01",
       "band": "Nine Inch Nails",
+      "headliner": "",
       "support": "Boys Noize",
       "tour": "Peel It Back",
       "venue": "Moody Center",
@@ -70,6 +75,7 @@
     {
       "date": "2025-12-11",
       "band": "Sevendust",
+      "headliner": "",
       "support": "Cory Marks",
       "tour": "Southside Double-Wide Tour",
       "venue": "Texas Theatre",
@@ -83,6 +89,7 @@
     {
       "date": "2025-09-01",
       "band": "Three Days Grace",
+      "headliner": "",
       "support": "Return to Dust",
       "tour": "Co-headline with Breaking Benjamin",
       "venue": "Dickies Arena",
@@ -96,6 +103,7 @@
     {
       "date": "2025-08-28",
       "band": "Shinedown",
+      "headliner": "",
       "support": "Bush, Morgan Wade",
       "tour": "Dance, Kid, Dance Tour",
       "venue": "Dickies Arena",
@@ -109,6 +117,7 @@
     {
       "date": "2025-08-18",
       "band": "Toto",
+      "headliner": "",
       "support": "Christopher Cross, Men at Work",
       "tour": "2025 American Summer Tour",
       "venue": "The Pavilion at Toyota Music Factory",
@@ -122,6 +131,7 @@
     {
       "date": "2025-08-15",
       "band": "Ghost",
+      "headliner": "",
       "support": "",
       "tour": "Skeletour World Tour 2025",
       "venue": "Dickies Arena",
@@ -129,12 +139,13 @@
       "status": "attended",
       "tags": "metal",
       "rating": 0,
-      "notes": "Phone-free show — no photos allowed.",
+      "notes": "Phone-free show — no photos allowed. No opener — Ghost played the whole night",
       "question": ""
     },
     {
       "date": "2025-08-02",
       "band": "\"Weird Al\" Yankovic",
+      "headliner": "",
       "support": "Puddles Pity Party",
       "tour": "Bigger & Weirder 2025",
       "venue": "Texas Trust CU Theatre",
@@ -148,6 +159,7 @@
     {
       "date": "2025-07-28",
       "band": "Volbeat",
+      "headliner": "",
       "support": "Halestorm, The Ghost Inside",
       "tour": "Greatest of All Tours Worldwide",
       "venue": "The Pavilion at Toyota Music Factory",
@@ -161,6 +173,7 @@
     {
       "date": "2025-06-26",
       "band": "Parkway Drive",
+      "headliner": "",
       "support": "Rotating headliners: Beartooth, I Prevail, Killswitch Engage. Support: The Devil Wears Prada, The Amity Affliction, Alpha Wolf. Opener: TX2",
       "tour": "Summer of Loud 2025",
       "venue": "Dos Equis Pavilion",
@@ -174,6 +187,7 @@
     {
       "date": "2025-04-26",
       "band": "Disturbed",
+      "headliner": "",
       "support": "Daughtry, Nothing More",
       "tour": "The Sickness 25th Anniversary Tour",
       "venue": "Dickies Arena",
@@ -187,6 +201,7 @@
     {
       "date": "2024-11-08",
       "band": "Linkin Park",
+      "headliner": "",
       "support": "Bad Omens, Helmet, Jean Dawson",
       "tour": "From Zero World Tour",
       "venue": "Globe Life Field",
@@ -200,6 +215,7 @@
     {
       "date": "2024-10-02",
       "band": "Flat Black",
+      "headliner": "Godsmack",
       "support": "Godsmack (headline)",
       "tour": "",
       "venue": "Texas Trust CU Theatre",
@@ -213,6 +229,7 @@
     {
       "date": "2023-06-07",
       "band": "Trivium",
+      "headliner": "",
       "support": "Beartooth (co-headline), Malevolence, Archetypes Collide",
       "tour": "The TrivTooth Tour",
       "venue": "The Factory in Deep Ellum",
@@ -226,6 +243,7 @@
     {
       "date": "2022-09-30",
       "band": "\"Weird Al\" Yankovic",
+      "headliner": "",
       "support": "Emo Philips",
       "tour": "The Unfortunate Return of the Ridiculously Self-Indulgent, Ill-Advised Vanity Tour",
       "venue": "Majestic Theatre",
@@ -239,6 +257,7 @@
     {
       "date": "2022-08-30",
       "band": "Megadeth",
+      "headliner": "Five Finger Death Punch",
       "support": "Five Finger Death Punch (headline), The HU, Fire From the Gods",
       "tour": "2022 co-headline tour",
       "venue": "Dos Equis Pavilion",
@@ -252,6 +271,7 @@
     {
       "date": "2021-12-11",
       "band": "Trans-Siberian Orchestra",
+      "headliner": "",
       "support": "",
       "tour": "2021 Winter Tour",
       "venue": "American Airlines Center",
@@ -259,25 +279,27 @@
       "status": "attended",
       "tags": "symphonic rock, holiday",
       "rating": 0,
-      "notes": "Two shows that day — 3:30 pm matinee and 8:00 pm. TSO's return after the 2020 tour was cancelled.",
+      "notes": "Two shows that day — 3:30 pm matinee and 8:00 pm. TSO's return after the 2020 tour was cancelled. No opener, as ever with TSO",
       "question": ""
     },
     {
       "date": "2019-09-08",
       "band": "Sevendust",
-      "support": "",
+      "headliner": "",
+      "support": "Even the Dead Love a Parade, DownLo, Crankfish",
       "tour": "",
       "venue": "Bomb Factory",
       "city": "Dallas, TX",
       "status": "attended",
       "tags": "metal",
       "rating": 0,
-      "notes": "",
+      "notes": "Short Texas/Oklahoma run between Houston (Sep 6) and Tulsa (Sep 7). Three local openers; set opened with 'Dirty' from All I See Is War.",
       "question": ""
     },
     {
       "date": "2019-04-26",
       "band": "Killswitch Engage",
+      "headliner": "",
       "support": "Parkway Drive (co-headline), After the Burial, Vein.fm",
       "tour": "Collapse the World Tour",
       "venue": "South Side Ballroom",
@@ -291,6 +313,7 @@
     {
       "date": "2019-04-04",
       "band": "Hamilton",
+      "headliner": "",
       "support": "",
       "tour": "Hamilton — national tour (Dallas Summer Musicals)",
       "venue": "Music Hall at Fair Park",
@@ -298,12 +321,13 @@
       "status": "attended",
       "tags": "musical, theater",
       "rating": 0,
-      "notes": "Thursday night in the first Dallas engagement of the tour, Apr 2–May 5, 2019. Hamilton returned to the Music Hall in Nov–Dec 2021 and to the Winspear in May–Jun 2024.",
+      "notes": "Thursday night in the first Dallas engagement of the tour, Apr 2–May 5, 2019. Hamilton returned to the Music Hall in Nov–Dec 2021 and to the Winspear in May–Jun 2024. No opener — a stage musical",
       "question": ""
     },
     {
       "date": "2018-10-20",
       "band": "Blue October",
+      "headliner": "",
       "support": "Longwave",
       "tour": "I Hope You're Happy Tour",
       "venue": "The Pavilion at Toyota Music Factory",
@@ -317,6 +341,7 @@
     {
       "date": "2018-08-29",
       "band": "Journey",
+      "headliner": "",
       "support": "Def Leppard (co-headline)",
       "tour": "Def Leppard & Journey 2018 Tour",
       "venue": "American Airlines Center",
@@ -330,6 +355,7 @@
     {
       "date": "2018-07-24",
       "band": "Seether",
+      "headliner": "",
       "support": "10 Years, The Dead Deads",
       "tour": "Poison the Parish World Tour",
       "venue": "The Bomb Factory",
@@ -343,6 +369,7 @@
     {
       "date": "2018-03-23",
       "band": "Highly Suspect",
+      "headliner": "",
       "support": "The Unlikely Candidates",
       "tour": "",
       "venue": "The Bomb Factory",
@@ -356,6 +383,7 @@
     {
       "date": "2018-03-03",
       "band": "AWOLNATION",
+      "headliner": "",
       "support": "Nothing But Thieves, Irontom",
       "tour": "Here Come the Runts Tour",
       "venue": "The Pavilion at Toyota Music Factory",
@@ -369,6 +397,7 @@
     {
       "date": "2017-06-16",
       "band": "Metallica",
+      "headliner": "",
       "support": "Avenged Sevenfold, Local H, Mix Master Mike",
       "tour": "WorldWired Tour",
       "venue": "AT&T Stadium",
@@ -382,6 +411,7 @@
     {
       "date": "2017-03-23",
       "band": "Wait Wait... Don't Tell Me!",
+      "headliner": "",
       "support": "Peter Sagal, Bill Kurtis",
       "tour": "NPR live taping",
       "venue": "Music Hall at Fair Park",
@@ -395,6 +425,7 @@
     {
       "date": "2016-10-19",
       "band": "Five Finger Death Punch",
+      "headliner": "",
       "support": "Shinedown (co-headline), Sixx:A.M., As Lions",
       "tour": "Fall Arena Tour 2016",
       "venue": "Verizon Theatre at Grand Prairie",
@@ -408,6 +439,7 @@
     {
       "date": "2016-09-10",
       "band": "Angel Vivaldi",
+      "headliner": "",
       "support": "Gus G (co-headline)",
       "tour": "Operation: Domination",
       "venue": "The Rail Club",
@@ -421,6 +453,7 @@
     {
       "date": "2016-08-12",
       "band": "Disturbed",
+      "headliner": "",
       "support": "Breaking Benjamin, Alter Bridge, Saint Asonia",
       "tour": "Immortalized Tour",
       "venue": "Gexa Energy Pavilion",
@@ -434,6 +467,7 @@
     {
       "date": "2016-08-03",
       "band": "Guns N' Roses",
+      "headliner": "",
       "support": "The Cult",
       "tour": "Not in This Lifetime Tour",
       "venue": "AT&T Stadium",
@@ -447,6 +481,7 @@
     {
       "date": "2016-01-17",
       "band": "Tool",
+      "headliner": "",
       "support": "Primus, 3Teeth",
       "tour": "North American Tour 2016",
       "venue": "Verizon Theatre at Grand Prairie",
@@ -460,6 +495,7 @@
     {
       "date": "2016-01-09",
       "band": "MxPx",
+      "headliner": "",
       "support": "Five Iron Frenzy",
       "tour": "",
       "venue": "Trees",
@@ -473,6 +509,7 @@
     {
       "date": "2015-08-21",
       "band": "\"Weird Al\" Yankovic",
+      "headliner": "",
       "support": "",
       "tour": "The Mandatory World Tour",
       "venue": "Verizon Theatre at Grand Prairie",
@@ -480,12 +517,13 @@
       "status": "attended",
       "tags": "comedy rock",
       "rating": 0,
-      "notes": "Behind Mandatory Fun. Same room you'd see him in again ten years later, by then renamed Texas Trust CU Theatre.",
+      "notes": "Behind Mandatory Fun. Same room you'd see him in again ten years later, by then renamed Texas Trust CU Theatre. No opener",
       "question": ""
     },
     {
       "date": "2014-10-20",
       "band": "Flaw",
+      "headliner": "",
       "support": "",
       "tour": "",
       "venue": "Trees",
@@ -499,6 +537,7 @@
     {
       "date": "2014-08-15",
       "band": "Demon Hunter",
+      "headliner": "",
       "support": "RED (co-headline), Veridia",
       "tour": "Extremist summer North American tour",
       "venue": "The Door",
@@ -512,6 +551,7 @@
     {
       "date": "2014-04-05",
       "band": "Sevendust",
+      "headliner": "",
       "support": "",
       "tour": "An Evening With Sevendust",
       "venue": "Trees",
@@ -519,12 +559,13 @@
       "status": "attended",
       "tags": "metal, acoustic",
       "rating": 0,
-      "notes": "Acoustic tour for Time Travelers & Bonfires — their first acoustic run since 2004. Clint Lowery sang 'Hurt' on this tour only.",
+      "notes": "Acoustic tour for Time Travelers & Bonfires — their first acoustic run since 2004. Clint Lowery sang 'Hurt' on this tour only. No opener — 'An Evening With' means the band alone",
       "question": ""
     },
     {
       "date": "2014-03-08",
       "band": "Lacuna Coil",
+      "headliner": "",
       "support": "Sick Puppies (co-headline), Eyes Set to Kill, Cilver",
       "tour": "Revolver Hottest Chicks in Hard Rock Tour",
       "venue": "Gas Monkey Bar N' Grill",
@@ -538,6 +579,7 @@
     {
       "date": "2013-02-26",
       "band": "Dropkick Murphys",
+      "headliner": "",
       "support": "",
       "tour": "Signed and Sealed in Blood era",
       "venue": "House of Blues",
@@ -546,11 +588,12 @@
       "tags": "celtic punk",
       "rating": 0,
       "notes": "Identified from video. Originally logged as Feb 17.",
-      "question": ""
+      "question": "Who opened? Setlist archives don't hold this date."
     },
     {
       "date": "2012-12-02",
       "band": "Killswitch Engage",
+      "headliner": "",
       "support": "Shadows Fall (co-headline)",
       "tour": "Co-headline tour with Shadows Fall",
       "venue": "Trees",
@@ -564,6 +607,7 @@
     {
       "date": "2012-09-13",
       "band": "Adam Carolla",
+      "headliner": "",
       "support": "Dennis Prager (co-bill)",
       "tour": "An Evening with Adam Carolla & Dennis Prager",
       "venue": "Majestic Theatre",
@@ -577,6 +621,7 @@
     {
       "date": "2011-11-12",
       "band": "Five Finger Death Punch",
+      "headliner": "",
       "support": "All That Remains, Hatebreed, Rains",
       "tour": "Share the Welt Tour",
       "venue": "Palladium Ballroom",
@@ -590,6 +635,7 @@
     {
       "date": "2011-05-10",
       "band": "Black Label Society",
+      "headliner": "",
       "support": "All That Remains, Rev Theory, Anchored",
       "tour": "Fuse TV Uranium Tour",
       "venue": "House of Blues",
@@ -603,6 +649,7 @@
     {
       "date": "2011-01-20",
       "band": "Ozzy Osbourne",
+      "headliner": "",
       "support": "Slash",
       "tour": "Scream World Tour",
       "venue": "American Airlines Center",
@@ -616,6 +663,7 @@
     {
       "date": "2010-10-06",
       "band": "Adam Carolla",
+      "headliner": "",
       "support": "",
       "tour": "",
       "venue": "Addison Improv",
@@ -629,6 +677,7 @@
     {
       "date": "2009-11-02",
       "band": "AC/DC",
+      "headliner": "",
       "support": "The Answer",
       "tour": "Black Ice World Tour",
       "venue": "American Airlines Center",
@@ -642,6 +691,7 @@
     {
       "date": "2009-09-29",
       "band": "Metallica",
+      "headliner": "",
       "support": "Lamb of God, Gojira",
       "tour": "World Magnetic Tour",
       "venue": "American Airlines Center",
@@ -655,6 +705,7 @@
     {
       "date": "2008-07-25",
       "band": "Five Finger Death Punch",
+      "headliner": "Slipknot",
       "support": "Main stage: Slipknot, Disturbed, Mastodon, DragonForce. Jagermeister stage: Machine Head, Airbourne. Hot Topic stage: Underoath, Suicide Silence, 36 Crazyfists, Black Tide, The Red Chord",
       "tour": "Rockstar Energy Mayhem Festival 2008",
       "venue": "Superpages.com Center",
@@ -668,6 +719,7 @@
     {
       "date": "2008-04-24",
       "band": "Van Halen",
+      "headliner": "",
       "support": "Ryan Shaw",
       "tour": "North American Tour 2007–2008",
       "venue": "American Airlines Center",
@@ -681,6 +733,7 @@
     {
       "date": "2006-11-29",
       "band": "Blue October",
+      "headliner": "",
       "support": "",
       "tour": "Foiled",
       "venue": "Lakewood Theater",
@@ -689,11 +742,12 @@
       "tags": "alt rock",
       "rating": 0,
       "notes": "The 29th, first of a two-night stand. Peak of the Foiled year, when Hate Me and Into the Ocean were everywhere.",
-      "question": ""
+      "question": "Who opened? Not in the archives for this date."
     },
     {
       "date": "2006-06-18",
       "band": "Edgefest 15",
+      "headliner": "Staind",
       "support": "Staind, Hoobastank, Shinedown, Three Days Grace, 30 Seconds to Mars, Seether, Flyleaf, Trapt, Buckcherry, Nonpoint, Drowning Pool, Hawthorne Heights, Atreyu, 10 Years, Evans Blue, Blue October, The Toadies",
       "tour": "KDGE 102.1 The Edge",
       "venue": "Pizza Hut Park",
@@ -707,6 +761,7 @@
     {
       "date": "2005-08-02",
       "band": "Megadeth",
+      "headliner": "",
       "support": "Dream Theater (co-headline), Fear Factory, Nevermore, Symphony X, Life of Agony, Dillinger Escape Plan",
       "tour": "Gigantour 2005",
       "venue": "Nokia Theatre at Grand Prairie",
@@ -720,6 +775,7 @@
     {
       "date": "2004-08-07",
       "band": "Edgefest 13",
+      "headliner": "Evanescence",
       "support": "Evanescence, Seether, Finger Eleven, Three Days Grace, Saliva, Breaking Benjamin, Lit, Blue October, Burning Brides, The Vanished",
       "tour": "KDGE 102.1 The Edge",
       "venue": "Smirnoff Music Centre",
@@ -733,6 +789,7 @@
     {
       "date": "2003-11-02",
       "band": "Stryper",
+      "headliner": "",
       "support": "",
       "tour": "Reunion Tour",
       "venue": "Ridglea Theater",
@@ -741,11 +798,12 @@
       "tags": "metal",
       "rating": 0,
       "notes": "First tour in 12 years with the original four. Falls inside the window they were recording for the live album '7 Weeks: Live in America, 2003.'",
-      "question": ""
+      "question": "Who opened? Sky Harbor joined part of the 2003 reunion tour; unconfirmed for Fort Worth."
     },
     {
       "date": "",
       "band": "Jay London",
+      "headliner": "",
       "support": "",
       "tour": "",
       "venue": "Addison Improv",
@@ -759,6 +817,7 @@
     {
       "date": "",
       "band": "Alonzo Bodden",
+      "headliner": "",
       "support": "",
       "tour": "",
       "venue": "Addison Improv",
